@@ -1,5 +1,6 @@
 # Compiled class file
 *.class
+/target/
 
 # Log file
 *.log
@@ -9,6 +10,21 @@
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
 
 # Package Files #
 *.jar
