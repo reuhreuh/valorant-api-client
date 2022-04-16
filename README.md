@@ -52,17 +52,17 @@ Import dependency in your pom.xml :
 Just instanciate the client with API key and Region :
 
 ```java
-	ValorantClient client = new ValorantClient("RGAPI-XXX", Region.EU);
-	Match m = client.getMatch("de3dc2b3-7db8-4b96-8a8a-17e5cee8e634");
+ValorantClient client = new ValorantClient("RGAPI-XXX", Region.EU);
+Match m = client.getMatch("de3dc2b3-7db8-4b96-8a8a-17e5cee8e634");
 ```
 
 If you are in a Spring context, you may wish to initialize a bean using your RestTemplate instance :
 
 ```java
-	@Bean
-	public ValorantClient getValorantClient(@Autowired RestTemplate restClient) {
-		return  client = new ValorantClient("RGAPI-XXX", Region.EU, restClient);
-	}
+@Bean
+public ValorantClient getValorantClient(@Autowired RestTemplate restClient) {
+	return  client = new ValorantClient("RGAPI-XXX", Region.EU, restClient);
+}
 ```
 
 
