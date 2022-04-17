@@ -14,11 +14,11 @@ Simple Java Valorant client consuming on official Riot API
 
 
 ## Features
-valorant-api-client provides 1 to 1 SDK to read official Valorant Riot API. There is no data transformation, no statistics calculation. 
+`valorant-api-client` provides 1 to 1 SDK to read official Valorant Riot API. There is no data transformation, no statistics calculation. 
 
 So far following end-points are implemented:
 
-VAL-MATCH-V1
+`VAL-MATCH-V1`
 
 - /val/match/v1/matches/{matchId}
 - /val/match/v1/matchlists/by-puuid/{puuid} (very soon)
@@ -39,7 +39,7 @@ What you need is :
 - Java 11 & Maven
 
 ### Installation
-Import dependency in your pom.xml :
+Import dependency in your `pom.xml` :
 
 ```xml
 <properties>
@@ -52,8 +52,8 @@ Import dependency in your pom.xml :
 <dependencies>
   ...
   <dependency>
-	<groupId>net.rrworld</groupId>
-	<artifactId>valorant-api-client</artifactId>
+    <groupId>net.rrworld</groupId>
+    <artifactId>valorant-api-client</artifactId>
     <version>${valorant.client.version}</version>
   </dependency>
   ...
@@ -68,7 +68,7 @@ ValorantClient client = new ValorantClient("RGAPI-XXX", Region.EU);
 Match m = client.getMatch("de3dc2b3-7db8-4b96-8a8a-17e5cee8e634");
 ```
 
-If you are in a Spring context, you may wish to initialize a bean using your RestTemplate instance :
+If you are in a Spring context, you may wish to initialize a bean using your `RestTemplate` instance :
 
 ```java
 @Bean
