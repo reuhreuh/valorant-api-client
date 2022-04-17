@@ -73,7 +73,7 @@ If you are in a Spring context, you may wish to initialize a bean using your `Re
 ```java
 @Bean
 public ValorantClient getClient(@Autowired RestTemplate restClient, @Value("${riot.api.key}") String apiKey) {
-	return  client = new ValorantClient(apiKey, Region.EU, restClient);
+	return new ValorantClient(apiKey, Region.EU, restClient);
 }
 ```
 
