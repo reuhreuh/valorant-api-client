@@ -10,6 +10,7 @@ Simple Java Valorant client consuming on official Riot API
 | Javadocs | [![Javadoc](https://javadoc.io/badge/com.fasterxml.jackson.core/jackson-core.svg)](https://javadoc.io/doc/com.fasterxml.jackson.core/jackson-core) |
 | Code coverage (2.13) | [![codecov.io](https://codecov.io/github/FasterXML/jackson-core/coverage.svg?branch=2.13)](https://codecov.io/github/FasterXML/jackson-core?branch=2.13) |
 | CodeQ (LGTM.com) | [![Total alerts](https://img.shields.io/lgtm/alerts/g/reuhreuh/valorant-api-client.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/reuhreuh/valorant-api-client/alerts/) [![Language grade: Java](https://img.shields.io/lgtm/grade/java/g/reuhreuh/valorant-api-client.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/reuhreuh/valorant-api-client/context:java)|
+|Licence | [![GitHub license](https://img.shields.io/github/license/reuhreuh/valorant-api-client)](https://github.com/reuhreuh/valorant-api-client/blob/master/LICENSE)|
 
 
 ## Features
