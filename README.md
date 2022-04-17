@@ -5,7 +5,7 @@ Simple Java Valorant client consuming on official Riot API
 
 | Type | Status |
 | ---- | ------ |
-| Build (CI) | [![Build (github)](https://github.com/FasterXML/jackson-core/actions/workflows/main.yml/badge.svg)](https://github.com/FasterXML/jackson-core/actions/workflows/main.yml) |
+| Build (CI) | ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/reuhreuh/valorant-api-client/Java%20CI%20with%20Maven)|
 | Artifact | [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.fasterxml.jackson.core/jackson-core/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.fasterxml.jackson.core/jackson-core) |
 | Javadocs | [![Javadoc](https://javadoc.io/badge/com.fasterxml.jackson.core/jackson-core.svg)](https://javadoc.io/doc/com.fasterxml.jackson.core/jackson-core) |
 | Code coverage (2.13) | [![codecov.io](https://codecov.io/github/FasterXML/jackson-core/coverage.svg?branch=2.13)](https://codecov.io/github/FasterXML/jackson-core?branch=2.13) |
