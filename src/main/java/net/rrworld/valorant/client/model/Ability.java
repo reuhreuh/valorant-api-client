@@ -10,19 +10,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Ability {
 
     @JsonProperty("grenadeEffects")
-    private Object grenadeEffects;
+    private String grenadeEffects;
     @JsonProperty("ability1Effects")
-    private Object ability1Effects;
+    private String ability1Effects;
     @JsonProperty("ability2Effects")
-    private Object ability2Effects;
+    private String ability2Effects;
     @JsonProperty("ultimateEffects")
-    private Object ultimateEffects;
+    private String ultimateEffects;
 
     public Object getGrenadeEffects() {
         return grenadeEffects;
     }
 
-    public void setGrenadeEffects(Object grenadeEffects) {
+    public void setGrenadeEffects(String grenadeEffects) {
         this.grenadeEffects = grenadeEffects;
     }
 
@@ -30,7 +30,7 @@ public class Ability {
         return ability1Effects;
     }
 
-    public void setAbility1Effects(Object ability1Effects) {
+    public void setAbility1Effects(String ability1Effects) {
         this.ability1Effects = ability1Effects;
     }
 
@@ -38,7 +38,7 @@ public class Ability {
         return ability2Effects;
     }
 
-    public void setAbility2Effects(Object ability2Effects) {
+    public void setAbility2Effects(String ability2Effects) {
         this.ability2Effects = ability2Effects;
     }
 
@@ -46,7 +46,7 @@ public class Ability {
         return ultimateEffects;
     }
 
-    public void setUltimateEffects(Object ultimateEffects) {
+    public void setUltimateEffects(String ultimateEffects) {
         this.ultimateEffects = ultimateEffects;
     }
 }

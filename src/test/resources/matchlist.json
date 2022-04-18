@@ -1,0 +1,29 @@
+{
+    "puuid": "puuid-123",
+    "history": [
+        {
+            "matchId": "dc619288-09f6-4e1c-b48a-313691614425",
+            "gameStartTimeMillis": 1650160223946,
+            "queueId": "competitive"
+        },
+        {
+            "matchId": "b157d462-3a95-4db5-bcff-dfc88c370d41",
+            "gameStartTimeMillis": 1650139506973,
+            "queueId": "spikerush"
+        },       {
+            "matchId": "bcb13a8e-a6d5-4984-9d90-ec347795bcf1",
+            "gameStartTimeMillis": 1647719852418,
+            "queueId": "deathmatch"
+        },
+        {
+            "matchId": "115e4789-2613-4e91-85cd-36548e39079a",
+            "gameStartTimeMillis": 1647646555703,
+            "queueId": "competitive"
+        },
+        {
+            "matchId": "55fb9bd8-c6ca-4ae3-bc14-e47e1e4f03fa",
+            "gameStartTimeMillis": 1647644013256,
+            "queueId": "competitive"
+        }
+    ]
+}

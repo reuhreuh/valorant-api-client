@@ -14,14 +14,14 @@ Simple Java Valorant client consuming on official Riot API
 
 
 ## Features
-`valorant-api-client` provides 1 to 1 SDK to read official Valorant Riot API. There is no data transformation, no statistics calculation. 
+`valorant-api-client` provides 1 to 1 SDK to read official Valorant Riot API. There is no data transformation, no statistics calculation at least for now...;)
 
 So far following end-points are implemented:
 
 `VAL-MATCH-V1`
 
 - /val/match/v1/matches/{matchId}
-- /val/match/v1/matchlists/by-puuid/{puuid} (very soon)
+- /val/match/v1/matchlists/by-puuid/{puuid}
 
 The SDK also provides a set of Java Enums for Valorant model (with UUIDs used in API) for :
 - Acts
