@@ -77,3 +77,4 @@ public ValorantClient getClient(@Autowired RestTemplate restClient, @Value("${ri
 
 
 ## Documentation
+Will be published soon
