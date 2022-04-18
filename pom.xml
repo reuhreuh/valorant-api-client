@@ -47,7 +47,7 @@
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>0.8.8</version>
+				<version>${jacoco.plugin.version}</version>
 				<executions>
 					<execution>
 						<goals>
@@ -63,18 +63,34 @@
 					</execution>
 				</executions>
 			</plugin>
-
+			<plugin>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>${maven-release-plugin.version}</version>
+				<configuration>
+					<scmCommentPrefix>[ci skip]</scmCommentPrefix>
+					<tagNameFormat>@{project.version}</tagNameFormat>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
+	<!-- Release management -->
 	<scm>
-		<connection>scm:git:${project.scm.url}</connection>
-		<developerConnection>scm:git:${project.scm.url}</developerConnection>
-		<url>git@github.com:reuhreuh/valorant-api-client.git</url>
-		<tag>HEAD</tag>
+		<connection>scm:git:git@github.com:reuhreuh/valorant-api-client.git</connection>
+		<developerConnection>scm:git:git@github.com:reuhreuh/valorant-api-client.git</developerConnection>
+		<url>https://github.com/reuhreuh/valorant-api-client/tree/master</url>
 	</scm>
+	<distributionManagement>
+		<repository>
+			<id>github</id>
+			<name>GitHub Packages</name>
+			<url>https://maven.pkg.github.com/reuhreuh/valorant-api-client</url>
+		</repository>
+	</distributionManagement>
 
+	<!-- properties -->
 	<properties>
+		<jacoco.plugin.version>0.8.8</jacoco.plugin.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>11</maven.compiler.source>
 		<maven.compiler.target>11</maven.compiler.target>
