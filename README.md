@@ -6,6 +6,7 @@ Simple Java Valorant client consuming on official [Riot API](https://developer.r
 | Type | Status |
 | ---- | ------ |
 | Build (CI) | ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/reuhreuh/valorant-api-client/Java%20CI%20with%20Maven)|
+| Javadoc | [![javadoc](https://javadoc.io/badge2/net.rr-world/valorant-api-client/javadoc.svg)](https://javadoc.io/doc/net.rr-world/valorant-api-client)|
 | Tests | ![GitHub Workflow Status](https://raw.githubusercontent.com/reuhreuh/valorant-api-client/master/.github/badges/jacoco.svg)|
 | CodeQ (LGTM.com) | [![Total alerts](https://img.shields.io/lgtm/alerts/g/reuhreuh/valorant-api-client.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/reuhreuh/valorant-api-client/alerts/) [![Language grade: Java](https://img.shields.io/lgtm/grade/java/g/reuhreuh/valorant-api-client.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/reuhreuh/valorant-api-client/context:java)|
 |Licence | [![GitHub license](https://img.shields.io/github/license/reuhreuh/valorant-api-client)](https://github.com/reuhreuh/valorant-api-client/blob/master/LICENSE)|
@@ -77,4 +78,4 @@ public ValorantClient getClient(@Autowired RestTemplate restClient, @Value("${ri
 
 
 ## Documentation
-Will be published soon
+Javadoc is available [here](https://javadoc.io/doc/net.rr-world/valorant-api-client/latest/index.html)
