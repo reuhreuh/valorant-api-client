@@ -50,7 +50,7 @@ Import dependency in your `pom.xml` :
 <dependencies>
   ...
   <dependency>
-    <groupId>net.rrworld</groupId>
+    <groupId>net.rr-world</groupId>
     <artifactId>valorant-api-client</artifactId>
     <version>${valorant.client.version}</version>
   </dependency>
