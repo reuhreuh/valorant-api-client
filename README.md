@@ -1,5 +1,5 @@
 # valorant-api-client
-Simple Java Valorant client consuming on official [Riot API](https://developer.riotgames.com/apis).
+Simple Java Valorant client consuming official [Riot API](https://developer.riotgames.com/apis).
 
 ## Status
 
