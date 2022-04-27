@@ -16,6 +16,9 @@
 			<id>reuhreuh</id>
 			<name>reuhreuh</name>
 			<email>reuhreuh@gmail.com</email>
+			<roles>
+				<role>Owner</role>
+			</roles>
 		</developer>
 	</developers>
 	<licenses>
@@ -153,6 +156,7 @@
 
 	<!-- properties -->
 	<properties>
+		<resilience4j.version>1.7.1</resilience4j.version>
 		<guava.version>31.1-jre</guava.version>
 		<jacoco.plugin.version>0.8.8</jacoco.plugin.version>
 		<maven.gpg.version>3.0.1</maven.gpg.version>
