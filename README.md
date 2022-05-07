@@ -44,7 +44,7 @@ Import dependency in your `pom.xml` :
 <properties>
   ...
   <!-- Use the latest version whenever possible. -->
-  <valorant.client.version>1.0.1</valorant.client.version>
+  <valorant.client.version>1.0.2</valorant.client.version>
   ...
 </properties>
 
@@ -80,8 +80,11 @@ public ValorantClient getClient(@Autowired RestTemplate restClient, @Value("${ri
 Javadoc is available [here](https://javadoc.io/doc/net.rr-world/valorant-api-client/latest/index.html)
 
 ## Changelog
-### v1.0.0 (2022-04-20)
-- Init
+### v1.0.2 (2022-05-07)
+- Add Agents role
+- Add Chamber & Neon abilities/Ultimate as Weapon (as seen by Riot API) 
 ### v1.0.1 (2022-04-27)
 - Package refactoring
 - Add new Enum value for Fade Agent
+### v1.0.0 (2022-04-20)
+- Init
