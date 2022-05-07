@@ -6,7 +6,14 @@ package net.rrworld.valorant.client.assets;
  * <li>identifier</li>
  * <li>label</li>
  * </ul>
- * 
+ * <p>
+ * Riot API considers some agent abilities as weapon :
+ * <ul>
+ * <li>Chamber Head Hunter (Ability1)</li>
+ * <li>Chamber Tour de Force (Ultimate)</li>
+ * <li>Neon Overdrive (Ultimate)</li>
+ * </ul>
+ * </p>
  * @author reuhreuh
  *
  */
@@ -36,7 +43,22 @@ public enum Weapon {
 	ODIN("63e6c2b6-4a8e-869c-3d4c-e38355226584", "Odin"),
 	// Snipers
 	MARSHALL("c4883e50-4494-202c-3ec3-6b8a9284f00b", "Marshall"),
-	OPERATOR("a03b24d3-4319-996d-0f8c-94bbfba1dfc7", "Operator");
+	OPERATOR("a03b24d3-4319-996d-0f8c-94bbfba1dfc7", "Operator"),
+	
+	/**
+	 * Chamber Ability1, seen as Weapon by Riot API
+	 */
+	HEADHUNTER("856d9a7e-4b06-dc37-15dc-9d809c37cb90", "Head Hunter"),
+	/**
+	 * Chamber Ultimate, seen as Weapon by Riot API
+	 */
+	TOURDEFORCE("39099fb5-4293-def4-1e09-2e9080ce7456", "Tour de Force"),
+	/**
+	 * Neon Ultimate, seen as Weapon by Riot API
+	 */
+	OVERDRIVE("95336ae4-45d4-1032-cfaf-6bad01910607","Overdrive");
+	
+	
 	
 	private String id;
 	private String label;
