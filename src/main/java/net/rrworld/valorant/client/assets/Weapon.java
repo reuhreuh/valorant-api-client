@@ -6,14 +6,12 @@ package net.rrworld.valorant.client.assets;
  * <li>identifier</li>
  * <li>label</li>
  * </ul>
- * <p>
  * Riot API considers some agent abilities as weapon :
  * <ul>
  * <li>Chamber Head Hunter (Ability1)</li>
  * <li>Chamber Tour de Force (Ultimate)</li>
  * <li>Neon Overdrive (Ultimate)</li>
  * </ul>
- * </p>
  * @author reuhreuh
  *
  */
