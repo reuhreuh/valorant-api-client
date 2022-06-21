@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.rr-world</groupId>
 	<artifactId>valorant-api-client</artifactId>
-	<version>1.0.3-SNAPSHOT</version>
+	<version>1.1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>valorant-api-client</name>
 	<description>Simple Valorant Http Client based on official Riot API</description>
@@ -48,6 +48,12 @@
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
 			<version>${guava.version}</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/io.github.resilience4j/resilience4j-ratelimiter -->
+		<dependency>
+			<groupId>io.github.resilience4j</groupId>
+			<artifactId>resilience4j-ratelimiter</artifactId>
+			<version>${resilience4j.version}</version>
 		</dependency>
 	</dependencies>
 
