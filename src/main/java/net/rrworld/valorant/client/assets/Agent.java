@@ -1,7 +1,7 @@
 package net.rrworld.valorant.client.assets;
 
 /**
- * Provides static data about each act :
+ * Provides static data about each agent :
  * <ul>
  * <li>identifier</li>
  * <li>label</li>

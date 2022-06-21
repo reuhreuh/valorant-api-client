@@ -31,7 +31,7 @@ public enum Weapon {
 	// Shotguns
 	BUCKY("910be174-449b-c412-ab22-d0873436b21b", "Bucky"),
 	JUDGE("ec845bf4-4f79-ddda-a3da-0db3774b2794", "Judge"),
-	// Rifle
+	// Rifles
 	BULLDOG("ae3de142-4d85-2547-dd26-4e90bed35cf7", "Bulldog"),
 	VANDAL("9c82e19d-4575-0200-1a81-3eacf00cf872", "Vandal"),
 	PHANTOM("ee8e8d15-496b-07ac-e5f6-8fae5d4c7b1a", "Phantom"),

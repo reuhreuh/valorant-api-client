@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.rr-world</groupId>
 	<artifactId>valorant-api-client</artifactId>
-	<version>1.0.2</version>
+	<version>1.0.3-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>valorant-api-client</name>
 	<description>Simple Valorant Http Client based on official Riot API</description>
@@ -122,7 +122,7 @@
 			<url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2</url>
 		</repository>
 	</distributionManagement>
-	
+
 	<!-- Profiles -->
 	<profiles>
 		<profile>
