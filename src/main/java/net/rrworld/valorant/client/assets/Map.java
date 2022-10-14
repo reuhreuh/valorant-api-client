@@ -5,7 +5,7 @@ package net.rrworld.valorant.client.assets;
  * <ul>
  * <li>identifier</li>
  * <li>label</li>
- * <li>in game path</li>
+ * <li>in-game path</li>
  * </ul>
  * 
  * @author reuhreuh
@@ -48,7 +48,7 @@ public enum Map {
 	 */
 	PEARL("fd267378-4d1d-484f-ff52-77821ed10dc2", "Pearl","/Game/Maps/Pitt/Pitt"),
 	/**
-	 * For personal usage purpose
+	 * For internal usage
 	 */
 	NONE("NONE", "None","NONE");
 

@@ -88,8 +88,14 @@ public enum Agent {
 	NEON("bb2a4828-46eb-8cd1-e765-15848195d751","Neon","Duelist","#125FD8"),
 	/**
 	 * Initiator, reveal, block, since Episode 4 - Act 3
+	 * @since 1.0.1
 	 */
-	FADE("dade69b4-4f5a-8528-247b-219e5a1facd6","Fade","Initiator","#2e4f78");
+	FADE("dade69b4-4f5a-8528-247b-219e5a1facd6","Fade","Initiator","#2e4f78"),
+	/**
+	 * Controller, smoke, wall, wave. since Episode 5 - Act 3
+	 * @since 1.0.4
+	 */
+	HARBOR("","Harbor","Controller","#327766");
 	
 	private String id;
 	private String label;
