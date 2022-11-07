@@ -95,7 +95,7 @@ public enum Agent {
 	 * Controller, smoke, wall, wave. since Episode 5 - Act 3
 	 * @since 1.0.4
 	 */
-	HARBOR("95b78ed7-463786d9-7e4171ba-8c293152","Harbor","Controller","#327766");
+	HARBOR("95b78ed7-4637-86d9-7e41-71ba8c293152","Harbor","Controller","#327766");
 	
 	private String id;
 	private String label;
