@@ -1,5 +1,9 @@
 package net.rrworld.valorant.client;
 
+import java.util.Arrays;
+import java.util.List;
+
+import org.junit.platform.commons.util.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -125,7 +129,8 @@ public class ValorantClient {
 		} catch (RestClientException rce) {
 			LOGGER.error("Error while calling Riot API for getMatch({}) : {}", matchId, rce.getMessage());
 		} finally {
-			rateLimitsExtractor(responseHeaders);
+			ExtractedLimits el = rateLimitsExtractor(responseHeaders);
+			RiotRateLimiter.getInstance().updateGetMatchLimits(el.getAppLimits(), el.getMethodLimits());
 		}
 		return m;
 	}
@@ -163,15 +168,42 @@ public class ValorantClient {
 		} catch (RestClientException e) {
 			LOGGER.error("Error while calling Riot API for getMatchlist({}) : {}", playerPuuid, e.getMessage());
 		} finally {
-			rateLimitsExtractor(responseHeaders);
+			ExtractedLimits el = rateLimitsExtractor(responseHeaders);
+			RiotRateLimiter.getInstance().updateGetMatchListLimits(el.getAppLimits(), el.getMethodLimits());
 		}
 		return ml;
 	}
 
-	private void rateLimitsExtractor(HttpHeaders headers) {
+	private ExtractedLimits rateLimitsExtractor(HttpHeaders headers) {
 		String appLimits = headers.getFirst(APP_RATE_LIMIT_HEADER);
 		String methodLimits = headers.getFirst(METHOD_RATE_LIMIT_HEADER);
-		LOGGER.debug("App limit : {}", appLimits);
-		LOGGER.debug("Method limit : {}", methodLimits);
+		LOGGER.debug("App limits : {}", appLimits);
+		LOGGER.debug("Method limits : {}", methodLimits);
+		ExtractedLimits el = new ExtractedLimits();
+		if(StringUtils.isNotBlank(appLimits)) {
+			el.setAppLimits(Arrays.asList(appLimits.split(",")));
+		}
+		if(StringUtils.isNotBlank(methodLimits)) {
+			el.setMethodLimits(Arrays.asList(methodLimits.split(",")));
+		}
+		return el;
+	}
+	
+	// Inner 
+	private static class ExtractedLimits {
+		List<String> appLimits;
+		List<String> methodLimits;
+		public List<String> getAppLimits() {
+			return appLimits;
+		}
+		public void setAppLimits(List<String> appLimits) {
+			this.appLimits = appLimits;
+		}
+		public List<String> getMethodLimits() {
+			return methodLimits;
+		}
+		public void setMethodLimits(List<String> methodLimits) {
+			this.methodLimits = methodLimits;
+		}
 	}
 }

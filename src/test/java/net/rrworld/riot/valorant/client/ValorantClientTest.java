@@ -146,7 +146,23 @@ public class ValorantClientTest {
 	}
 	
 	@Test
-	public void testRateLimiter() {
+	public void testRateLimiterSimple() {
+		MockRestServiceServer server = MockRestServiceServer.createServer(restTemplate);
+		server.expect(ExpectedCount.manyTimes(),requestTo("https://eu.api.riotgames.com/val/match/v1/matches/123")).andRespond(withSuccess(jsonMatch, MediaType.APPLICATION_JSON).headers(headers));
+		
+		final Long startTime = System.currentTimeMillis();
+	    client.getMatch("123");
+	    client.getMatch("123");
+	    final Long duration = (System.currentTimeMillis() - startTime);
+
+	    // then
+	    LOGGER.debug("Elpased time : {}ms", duration);
+	    //Assertions.assertTrue(duration >= 10000);
+	}
+	
+	
+	@Test
+	public void testRateLimiterAdvanced() {
 		MockRestServiceServer server = MockRestServiceServer.createServer(restTemplate);
 		server.expect(ExpectedCount.manyTimes(),requestTo("https://eu.api.riotgames.com/val/match/v1/matches/123")).andRespond(withSuccess(jsonMatch, MediaType.APPLICATION_JSON).headers(headers));
 		
@@ -164,8 +180,11 @@ public class ValorantClientTest {
 	
 	private HttpHeaders buildRiotHeaders() {
 		HttpHeaders h = new HttpHeaders();
+		// 20 per 1sec 
+		// 100 per 120sec
 		h.put(ValorantClient.APP_RATE_LIMIT_HEADER, List.of("20:1,100:120"));
 		h.put(ValorantClient.APP_RATE_LIMITE_COUNT_HEADER, List.of("1:1,1:120"));
+		// 60 per 60sec
 		h.put(ValorantClient.METHOD_RATE_LIMIT_HEADER, List.of("60:60"));
 		h.put(ValorantClient.METHOD_RATE_LIMIT_COUNT_HEADER, List.of("1:60"));
 		return h;
