@@ -39,7 +39,7 @@ public enum Map {
 	 */
 	ICEBOX("e2ad5c54-4114-a870-9641-8ea21279579a", "Icebox","/Game/Maps/Port/Port"),
 	/**
-	 * 
+	 * In India, with rotating doors and 3 BS A,B,C
 	 * @since 1.0.6
 	 */
 	LOTUS("2fe4ed3a-450a-948b-6d6b-e89a78e680a9", "Lotus","/Game/Maps/Jam/Jam"),
