@@ -44,7 +44,7 @@ Import dependency in your `pom.xml` :
 <properties>
   ...
   <!-- Use the latest version whenever possible. -->
-  <valorant.client.version>1.0.6</valorant.client.version>
+  <valorant.client.version>1.0.7</valorant.client.version>
   ...
 </properties>
 
@@ -80,6 +80,10 @@ public ValorantClient getClient(@Autowired RestTemplate restClient, @Value("${ri
 Javadoc is available [here](https://javadoc.io/doc/net.rr-world/valorant-api-client/latest/index.html)
 
 ## Changelog
+### v1.0.7 (2023-02-18)
+- Upgrade Spring version
+- Use concrete classes for `RoundResult` few attributes (`bombDefuser`, `defusePlayerLocations`)
+- Use one single object `Location`
 ### v1.0.6 (2023-01-11)
 - Add Episode 6, with 3 new Acts
 - Add new Map Lotus
