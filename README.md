@@ -80,7 +80,7 @@ public ValorantClient getClient(@Autowired RestTemplate restClient, @Value("${ri
 Javadoc is available [here](https://javadoc.io/doc/net.rr-world/valorant-api-client/latest/index.html)
 
 ## Changelog
-### v1.0.7 (2023-02-18)
+### v1.0.7 (2023-02-19)
 - Upgrade Spring version
 - Use concrete classes for `RoundResult` few attributes (`bombDefuser`, `defusePlayerLocations`)
 - Use one single object `Location`
