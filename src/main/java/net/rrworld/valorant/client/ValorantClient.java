@@ -121,7 +121,8 @@ public class ValorantClient {
 				LOGGER.info("Match {} found on Riot API", matchId);
 				m = response.getBody();
 			} else {
-				LOGGER.warn("Match {} not found on Riot API. HTTP response code : {}", matchId,	response.getStatusCodeValue());
+				LOGGER.warn("Match {} not found on Riot API. HTTP response code : {}", matchId,
+						response.getStatusCode().value());
 			}
 		} catch (RestClientResponseException e) {
 			responseHeaders = e.getResponseHeaders();
@@ -160,7 +161,8 @@ public class ValorantClient {
 				LOGGER.info("Matchlist found for player {} on Riot API", playerPuuid);
 				ml = response.getBody();
 			} else {
-				LOGGER.warn("Matchlist not found for player {} on Riot API. HTTP response code : {}", playerPuuid, response.getStatusCodeValue());
+				LOGGER.warn("Matchlist not found for player {} on Riot API. HTTP response code : {}", playerPuuid,
+						response.getStatusCode().value());
 			}
 		} catch(RestClientResponseException e) {
 			responseHeaders = e.getResponseHeaders();

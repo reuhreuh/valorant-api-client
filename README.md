@@ -6,9 +6,9 @@ Simple Java Valorant client consuming official [Riot API](https://developer.riot
 | Type | Status |
 | ---- | ------ |
 | Build | [![Maven build CI](https://github.com/reuhreuh/valorant-api-client/actions/workflows/maven.yml/badge.svg)](https://github.com/reuhreuh/valorant-api-client/actions/workflows/maven.yml)|
+| Quality | [![CodeQL](https://github.com/reuhreuh/valorant-api-client/actions/workflows/codeql.yml/badge.svg)](https://github.com/reuhreuh/valorant-api-client/actions/workflows/codeql.yml)|
 | Javadoc | [![javadoc](https://javadoc.io/badge2/net.rr-world/valorant-api-client/javadoc.svg)](https://javadoc.io/doc/net.rr-world/valorant-api-client)|
 | Tests | ![GitHub Workflow Status](https://raw.githubusercontent.com/reuhreuh/valorant-api-client/master/.github/badges/jacoco.svg)|
-| CodeQ (LGTM.com) | [![Total alerts](https://img.shields.io/lgtm/alerts/g/reuhreuh/valorant-api-client.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/reuhreuh/valorant-api-client/alerts/) [![Language grade: Java](https://img.shields.io/lgtm/grade/java/g/reuhreuh/valorant-api-client.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/reuhreuh/valorant-api-client/context:java)|
 |Licence | [![GitHub license](https://img.shields.io/github/license/reuhreuh/valorant-api-client)](https://github.com/reuhreuh/valorant-api-client/blob/master/LICENSE)|
 
 
@@ -44,7 +44,7 @@ Import dependency in your `pom.xml` :
 <properties>
   ...
   <!-- Use the latest version whenever possible. -->
-  <valorant.client.version>1.0.2</valorant.client.version>
+  <valorant.client.version>1.0.7</valorant.client.version>
   ...
 </properties>
 
@@ -80,6 +80,23 @@ public ValorantClient getClient(@Autowired RestTemplate restClient, @Value("${ri
 Javadoc is available [here](https://javadoc.io/doc/net.rr-world/valorant-api-client/latest/index.html)
 
 ## Changelog
+### v1.0.8 (TBD)
+- TBD
+### v1.0.7 (2023-02-19)
+- Upgrade Spring version
+- Use concrete classes for `RoundResult` few attributes (`bombDefuser`, `defusePlayerLocations`)
+- Use one single object `Location`
+### v1.0.6 (2023-01-11)
+- Add Episode 6, with 3 new Acts
+- Add new Map Lotus
+### v1.0.5 (2022-11-07)
+- Fix Harbor identifier
+- Upgrade spring starter version
+### v1.0.4 (2022-10-17)
+- Add new Agent Harbor
+### v1.0.3 (2022-06-22)
+- Add new Episode 5
+- Add new map Pearl
 ### v1.0.2 (2022-05-07)
 - Add Agents role
 - Add Chamber & Neon abilities/Ultimate as Weapon (as seen by Riot API) 

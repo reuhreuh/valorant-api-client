@@ -18,7 +18,7 @@ public class Ability {
     @JsonProperty("ultimateEffects")
     private String ultimateEffects;
 
-    public Object getGrenadeEffects() {
+    public String getGrenadeEffects() {
         return grenadeEffects;
     }
 

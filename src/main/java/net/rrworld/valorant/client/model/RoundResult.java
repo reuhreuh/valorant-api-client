@@ -22,21 +22,21 @@ public class RoundResult {
     @JsonProperty("bombPlanter")
     private String bombPlanter;
     @JsonProperty("bombDefuser")
-    private Object bombDefuser;
+    private String bombDefuser;
     @JsonProperty("plantRoundTime")
     private Integer plantRoundTime;
     @JsonProperty("plantPlayerLocations")
     private List<PlantPlayerLocation> plantPlayerLocations = null;
     @JsonProperty("plantLocation")
-    private PlantLocation plantLocation;
+    private Location plantLocation;
     @JsonProperty("plantSite")
     private String plantSite;
     @JsonProperty("defuseRoundTime")
     private Integer defuseRoundTime;
     @JsonProperty("defusePlayerLocations")
-    private Object defusePlayerLocations;
+    private List<DefusePlayerLocation> defusePlayerLocations = null;
     @JsonProperty("defuseLocation")
-    private DefuseLocation defuseLocation;
+    private Location defuseLocation;
     @JsonProperty("playerStats")
     private List<PlayerStat> playerStats = null;
     @JsonProperty("roundResultCode")
@@ -82,11 +82,11 @@ public class RoundResult {
         this.bombPlanter = bombPlanter;
     }
 
-    public Object getBombDefuser() {
+    public String getBombDefuser() {
         return bombDefuser;
     }
 
-    public void setBombDefuser(Object bombDefuser) {
+    public void setBombDefuser(String bombDefuser) {
         this.bombDefuser = bombDefuser;
     }
 
@@ -106,11 +106,11 @@ public class RoundResult {
         this.plantPlayerLocations = plantPlayerLocations;
     }
 
-    public PlantLocation getPlantLocation() {
+    public Location getPlantLocation() {
         return plantLocation;
     }
 
-    public void setPlantLocation(PlantLocation plantLocation) {
+    public void setPlantLocation(Location plantLocation) {
         this.plantLocation = plantLocation;
     }
 
@@ -130,19 +130,19 @@ public class RoundResult {
         this.defuseRoundTime = defuseRoundTime;
     }
 
-    public Object getDefusePlayerLocations() {
+    public List<DefusePlayerLocation> getDefusePlayerLocations() {
         return defusePlayerLocations;
     }
 
-    public void setDefusePlayerLocations(Object defusePlayerLocations) {
+    public void setDefusePlayerLocations(List<DefusePlayerLocation> defusePlayerLocations) {
         this.defusePlayerLocations = defusePlayerLocations;
     }
 
-    public DefuseLocation getDefuseLocation() {
+    public Location getDefuseLocation() {
         return defuseLocation;
     }
 
-    public void setDefuseLocation(DefuseLocation defuseLocation) {
+    public void setDefuseLocation(Location defuseLocation) {
         this.defuseLocation = defuseLocation;
     }
 
