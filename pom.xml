@@ -31,7 +31,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.7.8</version>
+		<version>2.7.9</version>
 		<relativePath />
 	</parent>
 
@@ -39,15 +39,16 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-json</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.yaml</groupId>
+					<artifactId>snakeyaml</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-			<version>${guava.version}</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/io.github.resilience4j/resilience4j-ratelimiter -->
 		<dependency>
@@ -165,7 +166,6 @@
 	<!-- properties -->
 	<properties>
 		<resilience4j.version>1.7.1</resilience4j.version>
-		<guava.version>31.1-jre</guava.version>
 		<jacoco.plugin.version>0.8.8</jacoco.plugin.version>
 		<maven.gpg.version>3.0.1</maven.gpg.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

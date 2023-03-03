@@ -1,6 +1,8 @@
 package net.rrworld.valorant.client.assets;
 
 import java.time.ZonedDateTime;
+import java.util.Arrays;
+import java.util.Comparator;
 
 /**
  * Provides static data about each act :
@@ -65,6 +67,11 @@ public enum Act {
 		return endTime;
 	}
 	
+	/**
+	 * Gets <code>Act</code> from a give Riot identifier (uuid)
+	 * @param id the Riot identifier
+	 * @return corresponding <code>Act</code>, or <code>null</code> if it does not exist
+	 */
 	public static Act valueOfId(String id) {
 		for(Act a : values()) {
 			if(a.getId().equals(id)) {
@@ -72,5 +79,20 @@ public enum Act {
 			}
 		}
 		return null;
+	}
+	
+	/**
+	 * Returns an array with <code>Act</code> sorted in anti chronological order
+	 * @return sorted <code>Act</code> array
+	 */
+	public static Act[] recentFirst() {
+		Act[] res = values();
+		Arrays.sort(res, new Comparator<Act>() {
+			@Override
+			public int compare(Act a1, Act a2) {
+				return a2.getStartTime().compareTo(a1.getStartTime());
+			}
+		});
+		return res;
 	}
 }
