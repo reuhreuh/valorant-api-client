@@ -95,7 +95,12 @@ public enum Agent {
 	 * Controller, smoke, wall, wave. since Episode 5 - Act 3
 	 * @since 1.0.4
 	 */
-	HARBOR("95b78ed7-4637-86d9-7e41-71ba8c293152","Harbor","Controller","#327766");
+	HARBOR("95b78ed7-4637-86d9-7e41-71ba8c293152","Harbor","Controller","#327766"),
+	/**
+	 * Initiator, molly, splash flash, wingman bot. Since Episode 6 - Act 2
+	 * @since 1.0.8
+	 */
+	GEKKO("e370fa57-4757-3604-3648-499e1f642d3f","Gekko","Initiator","#C7F559");
 	
 	private String id;
 	private String label;
