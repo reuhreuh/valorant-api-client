@@ -69,6 +69,10 @@ public enum Map {
 		this.id = id;
 		this.label = label;
 		this.path = path;
+		this.xMultiplier = xMultiplier;
+		this.yMultiplier = yMultiplier;
+		this.xScalarToAdd = xScalarToAdd;
+		this.yScalarToAdd = yScalarToAdd;
 	}
 
 	public String getId() {
