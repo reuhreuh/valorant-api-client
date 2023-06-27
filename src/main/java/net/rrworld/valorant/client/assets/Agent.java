@@ -105,7 +105,7 @@ public enum Agent {
 	 * Sentinel
 	 * @since 1.0.9
 	 */
-	Z("","","Sentinel","");
+	DEADLOCK("cc8b64c8-4b25-4ff9-6e7f-37b4da43d235","Deadlock","Sentinel","#99918D");
 	
 	
 	private String id;
