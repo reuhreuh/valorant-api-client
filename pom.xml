@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.rr-world</groupId>
 	<artifactId>valorant-api-client</artifactId>
-	<version>1.0.9-SNAPSHOT</version>
+	<version>1.0.9</version>
 	<packaging>jar</packaging>
 	<name>valorant-api-client</name>
 	<description>Simple Valorant Http Client based on official Riot API</description>
@@ -31,7 +31,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.7.9</version>
+		<version>2.7.12</version>
 		<relativePath />
 	</parent>
 
