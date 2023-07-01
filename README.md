@@ -80,6 +80,8 @@ public ValorantClient getClient(@Autowired RestTemplate restClient, @Value("${ri
 Javadoc is available [here](https://javadoc.io/doc/net.rr-world/valorant-api-client/latest/index.html)
 
 ## Changelog
+### v1.0.10 (TBD)
+- ...
 ### v1.0.9 (2023-07-01)
 - Add new Episode 7
 - Add new Agent Deadlock
