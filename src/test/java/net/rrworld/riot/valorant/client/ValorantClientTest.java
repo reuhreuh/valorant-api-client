@@ -37,6 +37,7 @@ import net.rrworld.valorant.client.model.Player;
 import net.rrworld.valorant.client.model.PlayerStat;
 import net.rrworld.valorant.client.model.RoundResult;
 import net.rrworld.valorant.client.model.Team;
+import net.rrworld.valorant.client.ratelimiter.RiotRateLimiter;
 
 public class ValorantClientTest {
 
@@ -66,7 +67,7 @@ public class ValorantClientTest {
 		Assertions.assertEquals(2, m.getTeams().size(), "Wrong teams count");
 		Assertions.assertEquals(10, m.getPlayers().size(), "Wrong players count");
 		Assertions.assertEquals(Map.SPLIT, Map.valueOfPath(m.getMatchInfo().getMapId()), "Expected map was Split");
-		Assertions.assertEquals(Act.EP4_Act2, Act.valueOfId(m.getMatchInfo().getSeasonId()), "Expected season was");
+		Assertions.assertEquals(Act.EP4_Act2, Act.valueOfId(m.getMatchInfo().getSeasonId()), "Expected season was EP4_Act2");
 		
 		// One player : Skye
 		Optional<Player> op = m.getPlayers().stream().filter(p -> Agent.SKYE.getId().equals(p.getCharacterId())).findFirst();
@@ -181,12 +182,12 @@ public class ValorantClientTest {
 	private HttpHeaders buildRiotHeaders() {
 		HttpHeaders h = new HttpHeaders();
 		// 20 per 1sec 
-		// 100 per 120sec
-		h.put(ValorantClient.APP_RATE_LIMIT_HEADER, List.of("20:1,100:120"));
-		h.put(ValorantClient.APP_RATE_LIMITE_COUNT_HEADER, List.of("1:1,1:120"));
+		// 100 per 2min
+		h.put(RiotRateLimiter.APP_RATE_LIMIT_HEADER, List.of("20:1,100:120"));
+		h.put(RiotRateLimiter.APP_RATE_LIMITE_COUNT_HEADER, List.of("1:1,1:120"));
 		// 60 per 60sec
-		h.put(ValorantClient.METHOD_RATE_LIMIT_HEADER, List.of("60:60"));
-		h.put(ValorantClient.METHOD_RATE_LIMIT_COUNT_HEADER, List.of("1:60"));
+		h.put(RiotRateLimiter.METHOD_RATE_LIMIT_HEADER, List.of("60:60"));
+		h.put(RiotRateLimiter.METHOD_RATE_LIMIT_COUNT_HEADER, List.of("1:60"));
 		return h;
 	}
 }

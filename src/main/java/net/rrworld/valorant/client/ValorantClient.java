@@ -41,22 +41,6 @@ public class ValorantClient {
 	 * API Key request header
 	 */
 	public static final String API_KEY_HEADER = "X-Riot-Token";
-	/**
-	 * Application rate limit response header
-	 */
-	public static final String APP_RATE_LIMIT_HEADER = "X-App-Rate-Limit";
-	/**
-	 * Application rate limit count response header
-	 */
-	public static final String APP_RATE_LIMITE_COUNT_HEADER = "X-App-Rate-Limit-Count";
-	/**
-	 * Method rate limit response header
-	 */
-	public static final String METHOD_RATE_LIMIT_HEADER = "X-Method-Rate-Limit";
-	/**
-	 * Method rate limit count response header
-	 */
-	public static final String METHOD_RATE_LIMIT_COUNT_HEADER = "X-Method-Rate-Limit-Count";
 	
 	private static final String MATCH_URL = "https://%s.api.riotgames.com/val/match/v1/matches/%s";
 	private static final String MATCH_LIST_URL = "https://%s.api.riotgames.com/val/match/v1/matchlists/by-puuid/%s";
@@ -112,9 +96,7 @@ public class ValorantClient {
 		ResponseEntity<Match> response = null;
 		HttpHeaders responseHeaders = null;
 		try {
-			HttpHeaders headers = new HttpHeaders();
-			headers.add(API_KEY_HEADER, apiKey);
-			HttpEntity<String> entity = new HttpEntity<>(headers);
+			HttpEntity<String> entity = prepareRequestHeader();
 			response = restClient.exchange(url, HttpMethod.GET, entity, Match.class);
 			responseHeaders = response.getHeaders();
 			if (HttpStatus.OK == response.getStatusCode()) {
@@ -135,7 +117,7 @@ public class ValorantClient {
 		}
 		return m;
 	}
-
+	
 	/**
 	 * Get match list history for a given player, identified by its
 	 * <code>puuid</code>
@@ -146,15 +128,18 @@ public class ValorantClient {
 	 * @return the match list history DTO or <code>null</code>, in case of error.
 	 */
 	public Matchlist getMatchlist(final String playerPuuid) {
+		return RiotRateLimiter.getInstance().getMatchlist(() -> getMatchlistInternal(playerPuuid));
+	}
+
+
+	private Matchlist getMatchlistInternal(final String playerPuuid) {
 		LOGGER.info("Retrieving match list for player {} from Riot API", playerPuuid);
 		String url = String.format(MATCH_LIST_URL, region, playerPuuid);
 		Matchlist ml = null;
 		ResponseEntity<Matchlist> response = null;
 		HttpHeaders responseHeaders = null;
 		try {
-			HttpHeaders headers = new HttpHeaders();
-			headers.add(API_KEY_HEADER, apiKey);
-			HttpEntity<String> entity = new HttpEntity<>(headers);
+			HttpEntity<String> entity = prepareRequestHeader();
 			response = restClient.exchange(url, HttpMethod.GET, entity, Matchlist.class);
 			responseHeaders = response.getHeaders();
 			if (HttpStatus.OK == response.getStatusCode()) {
@@ -176,9 +161,16 @@ public class ValorantClient {
 		return ml;
 	}
 
+	private HttpEntity<String> prepareRequestHeader() {
+		HttpHeaders headers = new HttpHeaders();
+		headers.add(API_KEY_HEADER, apiKey);
+		HttpEntity<String> entity = new HttpEntity<>(headers);
+		return entity;
+	}
+
 	private ExtractedLimits rateLimitsExtractor(HttpHeaders headers) {
-		String appLimits = headers.getFirst(APP_RATE_LIMIT_HEADER);
-		String methodLimits = headers.getFirst(METHOD_RATE_LIMIT_HEADER);
+		String appLimits = headers.getFirst(RiotRateLimiter.APP_RATE_LIMIT_HEADER);
+		String methodLimits = headers.getFirst(RiotRateLimiter.METHOD_RATE_LIMIT_HEADER);
 		LOGGER.debug("App limits : {}", appLimits);
 		LOGGER.debug("Method limits : {}", methodLimits);
 		ExtractedLimits el = new ExtractedLimits();
