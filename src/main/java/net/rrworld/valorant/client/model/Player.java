@@ -29,6 +29,8 @@ public class Player {
     private String playerCard;
     @JsonProperty("playerTitle")
     private String playerTitle;
+    @JsonProperty("accountLevel")
+	private Integer accountLevel;
 
     public String getPuuid() {
         return puuid;
@@ -109,4 +111,12 @@ public class Player {
     public void setPlayerTitle(String playerTitle) {
         this.playerTitle = playerTitle;
     }
+
+	public Integer getAccountLevel() {
+		return accountLevel;
+	}
+
+	public void setAccountLevel(Integer accountLevel) {
+		this.accountLevel = accountLevel;
+	}
 }

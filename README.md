@@ -81,32 +81,33 @@ Javadoc is available [here](https://javadoc.io/doc/net.rr-world/valorant-api-cli
 
 ## Changelog
 ### v1.0.10 (TBD)
-- ...
+- Add new Map `Sunset`
+- Add `accountLevel` mapping
 ### v1.0.9 (2023-07-01)
 - Add new Episode 7
-- Add new Agent Deadlock
+- Add new Agent `Deadlock`
 ### v1.0.8 (2023-03-08)
-- Add new Agent Gekko
+- Add new Agent `Gekko`
 ### v1.0.7 (2023-02-19)
 - Upgrade Spring version
 - Use concrete classes for `RoundResult` few attributes (`bombDefuser`, `defusePlayerLocations`)
 - Use one single object `Location`
 ### v1.0.6 (2023-01-11)
 - Add Episode 6, with 3 new Acts
-- Add new Map Lotus
+- Add new Map `Lotus`
 ### v1.0.5 (2022-11-07)
 - Fix Harbor identifier
 - Upgrade spring starter version
 ### v1.0.4 (2022-10-17)
-- Add new Agent Harbor
+- Add new Agent `Harbor`
 ### v1.0.3 (2022-06-22)
 - Add new Episode 5
-- Add new map Pearl
+- Add new map `Pearl`
 ### v1.0.2 (2022-05-07)
 - Add Agents role
 - Add Chamber & Neon abilities/Ultimate as Weapon (as seen by Riot API) 
 ### v1.0.1 (2022-04-27)
 - Package refactoring
-- Add new Enum value for Fade Agent
+- Add new Enum value for `Fade` Agent
 ### v1.0.0 (2022-04-20)
 - Init

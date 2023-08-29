@@ -152,7 +152,7 @@ public enum Agent {
 	
 	public static Agent valueOfId(String id) {
 		for(Agent a : values()) {
-			if(a.getId().equals(id)) {
+			if(a.getId().equalsIgnoreCase(id)) {
 				return a;
 			}
 		}
