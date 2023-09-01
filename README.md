@@ -82,7 +82,7 @@ Javadoc is available [here](https://javadoc.io/doc/net.rr-world/valorant-api-cli
 ## Changelog
 ### v1.0.10 (TBD)
 - Add new Map `Sunset`
-- Add `accountLevel` mapping
+- Add `accountLevel` and `isObserver` mapping on `Player`
 ### v1.0.9 (2023-07-01)
 - Add new Episode 7
 - Add new Agent `Deadlock`
