@@ -98,11 +98,11 @@ public class Player {
         this.competitiveTier = competitiveTier;
     }
 	
-    public Boolean getObserver() {
+    public Boolean getIsObserver() {
         return isObserver;
     }
 
-    public void setObserver(Boolean observer) {
+    public void setIsObserver(Boolean observer) {
         this.isObserver = observer;
     }	
 
