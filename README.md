@@ -5,7 +5,7 @@ Simple Java Valorant client consuming official [Riot API](https://developer.riot
 
 | Type | Status |
 | ---- | ------ |
-| Build | [![Maven build CI](https://github.com/reuhreuh/valorant-api-client/actions/workflows/maven.yml/badge.svg)](https://github.com/reuhreuh/valorant-api-client/actions/workflows/maven.yml)|
+| Build | [![Maven build CI](https://github.com/reuhreuh/valorant-api-client/actions/workflows/maven-master.yml/badge.svg)](https://github.com/reuhreuh/valorant-api-client/actions/workflows/maven-master.yml)|
 | Quality | [![CodeQL](https://github.com/reuhreuh/valorant-api-client/actions/workflows/codeql.yml/badge.svg)](https://github.com/reuhreuh/valorant-api-client/actions/workflows/codeql.yml)|
 | Javadoc | [![javadoc](https://javadoc.io/badge2/net.rr-world/valorant-api-client/javadoc.svg)](https://javadoc.io/doc/net.rr-world/valorant-api-client)|
 | Tests | ![GitHub Workflow Status](https://raw.githubusercontent.com/reuhreuh/valorant-api-client/master/.github/badges/jacoco.svg)|
