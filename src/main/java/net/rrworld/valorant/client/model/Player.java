@@ -25,6 +25,8 @@ public class Player {
     private Stats stats;
     @JsonProperty("competitiveTier")
     private Integer competitiveTier;
+    @JsonProperty("isObserver")
+    private Boolean isObserver;	
     @JsonProperty("playerCard")
     private String playerCard;
     @JsonProperty("playerTitle")
@@ -95,6 +97,14 @@ public class Player {
     public void setCompetitiveTier(Integer competitiveTier) {
         this.competitiveTier = competitiveTier;
     }
+	
+    public Boolean getObserver() {
+        return isObserver;
+    }
+
+    public void setObserver(Boolean observer) {
+        this.isObserver = observer;
+    }	
 
     public String getPlayerCard() {
         return playerCard;
