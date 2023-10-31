@@ -110,7 +110,7 @@ public enum Agent {
 	 * Duelist
 	 * @since 1.0.11
 	 */
-	ISO("", "Iso", "Duelist","#3C1279");
+	ISO("0e38b510-41a8-5780-5e8f-568b2a4f2d6c", "Iso", "Duelist","#3C1279");
 	
 	
 	private String id;
