@@ -82,6 +82,8 @@ Javadoc is available [here](https://javadoc.io/doc/net.rr-world/valorant-api-cli
 ## Changelog
 ### v1.0.12 (2024-01)
 - Add new Episode 8
+- Add new weapon `Outlaw`
+- Add `PremierMatchInfo` attribute on `Match`
 ### v1.0.11 (2023-10-31)
 - Add new Agent `Iso`
 ### v1.0.10 (2023-09-07)
