@@ -45,7 +45,7 @@ public enum Weapon {
 	/**
 	 * @since 1.0.12
 	 */
-	OUTLAW("c4883e50-4494-202c-3ec3-6b8a9284f00b","Outlaw"),
+	OUTLAW("5f0aaf7a-4289-3998-d5ff-eb9a5cf7ef5c","Outlaw"),
 	
 	/**
 	 * Chamber Ability1, seen as Weapon by Riot API
