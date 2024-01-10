@@ -80,6 +80,8 @@ public ValorantClient getClient(@Autowired RestTemplate restClient, @Value("${ri
 Javadoc is available [here](https://javadoc.io/doc/net.rr-world/valorant-api-client/latest/index.html)
 
 ## Changelog
+### v1.0.13 (TBD)
+- ...
 ### v1.0.12 (2024-01-10)
 - Add new Episode 8
 - Add new weapon `Outlaw`
