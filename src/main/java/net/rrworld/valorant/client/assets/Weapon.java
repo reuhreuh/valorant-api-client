@@ -42,6 +42,10 @@ public enum Weapon {
 	// Snipers
 	MARSHALL("c4883e50-4494-202c-3ec3-6b8a9284f00b", "Marshall"),
 	OPERATOR("a03b24d3-4319-996d-0f8c-94bbfba1dfc7", "Operator"),
+	/**
+	 * @since 1.0.12
+	 */
+	OUTLAW("c4883e50-4494-202c-3ec3-6b8a9284f00b","Outlaw"),
 	
 	/**
 	 * Chamber Ability1, seen as Weapon by Riot API

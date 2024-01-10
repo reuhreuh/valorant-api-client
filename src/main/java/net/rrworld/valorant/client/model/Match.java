@@ -21,6 +21,11 @@ public class Match {
     private List<Team> teams = null;
     @JsonProperty("roundResults")
     private List<RoundResult> roundResults = null;
+    /**
+     * @since 1.0.12
+     */
+    @JsonProperty("premierMatchInfo")
+    private PremierMatchInfo premierMatchInfo = null;
 
     public MatchInfo getMatchInfo() {
         return matchInfo;
@@ -61,4 +66,12 @@ public class Match {
     public void setRoundResults(List<RoundResult> roundResults) {
         this.roundResults = roundResults;
     }
+
+	public PremierMatchInfo getPremierMatchInfo() {
+		return premierMatchInfo;
+	}
+
+	public void setPremierMatchInfo(PremierMatchInfo premierMatchInfo) {
+		this.premierMatchInfo = premierMatchInfo;
+	}
 }
