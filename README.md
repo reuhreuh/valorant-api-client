@@ -22,6 +22,8 @@ So far following end-points are implemented:
 - /val/match/v1/matches/{matchId}
 - /val/match/v1/matchlists/by-puuid/{puuid}
 
+The http client will be configured with the rate limits set on your API key by Riot team.
+
 The SDK also provides a set of Java Enums for Valorant model (with UUIDs used in API) for :
 - Acts
 - Agents
