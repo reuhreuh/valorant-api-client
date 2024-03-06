@@ -42,6 +42,9 @@ public class ValorantClient {
 	 */
 	public static final String API_KEY_HEADER = "X-Riot-Token";
 	
+	private static final String ACCOUNT_BY_PUUID_URL = "https://%s.api.riotgames.com/riot/account/v1/accounts/by-puuid/%s";
+	private static final String ACCOUNT_BY_RIOT_ID = "https://%s.api.riotgames.com/riot/account/v1/accounts/by-riot-id/%s/%s";
+	
 	private static final String MATCH_URL = "https://%s.api.riotgames.com/val/match/v1/matches/%s";
 	private static final String MATCH_LIST_URL = "https://%s.api.riotgames.com/val/match/v1/matchlists/by-puuid/%s";
 

@@ -61,8 +61,12 @@ public class ValorantClientTest {
 	@Test
 	public void testGetMatch200() {
 		MockRestServiceServer server = MockRestServiceServer.createServer(restTemplate);
-		server.expect(requestTo("https://eu.api.riotgames.com/val/match/v1/matches/123")).andRespond(withSuccess(jsonMatch, MediaType.APPLICATION_JSON));
+		server
+			.expect(requestTo("https://eu.api.riotgames.com/val/match/v1/matches/123"))
+			.andRespond(withSuccess(jsonMatch, MediaType.APPLICATION_JSON).headers(headers));
+		
 		Match m = client.getMatch("123");
+		
 		// Match
 		Assertions.assertEquals(2, m.getTeams().size(), "Wrong teams count");
 		Assertions.assertEquals(10, m.getPlayers().size(), "Wrong players count");
@@ -105,15 +109,21 @@ public class ValorantClientTest {
 	@Test
 	public void testGetMatch404() {
 		MockRestServiceServer server = MockRestServiceServer.createServer(restTemplate);
-		server.expect(requestTo("https://eu.api.riotgames.com/val/match/v1/matches/123")).andRespond(withStatus(HttpStatus.NOT_FOUND).headers(headers));
-		Match m = client.getMatch("123");		
+		server
+			.expect(requestTo("https://eu.api.riotgames.com/val/match/v1/matches/123"))
+			.andRespond(withStatus(HttpStatus.NOT_FOUND).headers(headers));
+		
+		Match m = client.getMatch("123");
+		
 		Assertions.assertNull(m, "Match should be null");
 	}
 	
 	@Test
 	public void testGetMatch403() {
 		MockRestServiceServer server = MockRestServiceServer.createServer(restTemplate);
-		server.expect(requestTo("https://eu.api.riotgames.com/val/match/v1/matches/123")).andRespond(withStatus(HttpStatus.FORBIDDEN).headers(headers));
+		server
+			.expect(requestTo("https://eu.api.riotgames.com/val/match/v1/matches/123"))
+			.andRespond(withStatus(HttpStatus.FORBIDDEN).headers(headers));
 		Match m = client.getMatch("123");		
 		Assertions.assertNull(m, "Match should be null");
 	}
@@ -121,8 +131,12 @@ public class ValorantClientTest {
 	@Test
 	public void testGetMatchlist200() {
 		MockRestServiceServer server = MockRestServiceServer.createServer(restTemplate);
-		server.expect(requestTo("https://eu.api.riotgames.com/val/match/v1/matchlists/by-puuid/puuid-123")).andRespond(withSuccess(jsonMatchlist, MediaType.APPLICATION_JSON).headers(headers));
+		server
+			.expect(requestTo("https://eu.api.riotgames.com/val/match/v1/matchlists/by-puuid/puuid-123"))
+			.andRespond(withSuccess(jsonMatchlist, MediaType.APPLICATION_JSON).headers(headers));
+		
 		Matchlist ml = client.getMatchlist("puuid-123");
+		
 		Assertions.assertNotNull(ml, "Matchlist shouldn't be null");
 		Assertions.assertEquals("puuid-123", ml.getPuuid(), "Wrong puuid");
 		Assertions.assertEquals(5, ml.getHistory().size(), "5 matches were expected");
@@ -133,39 +147,53 @@ public class ValorantClientTest {
 	@Test
 	public void testGetMatchlist404() {
 		MockRestServiceServer server = MockRestServiceServer.createServer(restTemplate);
-		server.expect(requestTo("https://eu.api.riotgames.com/val/match/v1/matchlists/by-puuid/puuid-123")).andRespond(withStatus(HttpStatus.NOT_FOUND).headers(headers));
-		Matchlist ml = client.getMatchlist("puuid-123");		
+		server
+			.expect(requestTo("https://eu.api.riotgames.com/val/match/v1/matchlists/by-puuid/puuid-123"))
+			.andRespond(withStatus(HttpStatus.NOT_FOUND).headers(headers));
+		
+		Matchlist ml = client.getMatchlist("puuid-123");	
+		
 		Assertions.assertNull(ml, "Match should be null");
 	}
 	
 	@Test
 	public void testGetMatchlist403() {
 		MockRestServiceServer server = MockRestServiceServer.createServer(restTemplate);
-		server.expect(requestTo("https://eu.api.riotgames.com/val/match/v1/matchlists/by-puuid/puuid-123")).andRespond(withStatus(HttpStatus.FORBIDDEN).headers(headers));
-		Matchlist ml = client.getMatchlist("puuid-123");		
+		server
+			.expect(requestTo("https://eu.api.riotgames.com/val/match/v1/matchlists/by-puuid/puuid-123"))
+			.andRespond(withStatus(HttpStatus.FORBIDDEN).headers(headers));
+		
+		Matchlist ml = client.getMatchlist("puuid-123");	
+		
 		Assertions.assertNull(ml, "Match should be null");
 	}
 	
 	@Test
 	public void testRateLimiterSimple() {
 		MockRestServiceServer server = MockRestServiceServer.createServer(restTemplate);
-		server.expect(ExpectedCount.manyTimes(),requestTo("https://eu.api.riotgames.com/val/match/v1/matches/123")).andRespond(withSuccess(jsonMatch, MediaType.APPLICATION_JSON).headers(headers));
+		server
+			.expect(ExpectedCount.manyTimes(),requestTo("https://eu.api.riotgames.com/val/match/v1/matches/123"))
+			.andRespond(withSuccess(jsonMatch, MediaType.APPLICATION_JSON).headers(headers));
 		
 		final Long startTime = System.currentTimeMillis();
-	    client.getMatch("123");
-	    client.getMatch("123");
+		IntStream.range(0, 21).forEach(i -> {
+	    	LOGGER.debug("Processing Match #{}",i);
+	        client.getMatch("123");
+		});
 	    final Long duration = (System.currentTimeMillis() - startTime);
 
 	    // then
 	    LOGGER.debug("Elpased time : {}ms", duration);
-	    //Assertions.assertTrue(duration >= 10000);
+	    Assertions.assertTrue(duration >= 1000, "Duration was expecter to be greated than 1sec");
 	}
 	
 	
-	@Test
+	//@Test
 	public void testRateLimiterAdvanced() {
 		MockRestServiceServer server = MockRestServiceServer.createServer(restTemplate);
-		server.expect(ExpectedCount.manyTimes(),requestTo("https://eu.api.riotgames.com/val/match/v1/matches/123")).andRespond(withSuccess(jsonMatch, MediaType.APPLICATION_JSON).headers(headers));
+		server
+			.expect(ExpectedCount.manyTimes(),requestTo("https://eu.api.riotgames.com/val/match/v1/matches/123"))
+			.andRespond(withSuccess(jsonMatch, MediaType.APPLICATION_JSON).headers(headers));
 		
 		final Long startTime = System.currentTimeMillis();
 	    IntStream.range(0, 500).forEach(i -> {

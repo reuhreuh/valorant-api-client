@@ -66,8 +66,8 @@ public class RiotRateLimiter {
      */
     private RiotRateLimiter() {
     	// Default Application config
+		this.registry = RateLimiterRegistry.ofDefaults();
     	// 20 requests every 1 seconds
-    	/*
     	RateLimiterConfig appShortConfig = RateLimiterConfig.custom()
     			.limitForPeriod(20)
     			.limitRefreshPeriod(Duration.ofSeconds(1))
@@ -79,12 +79,9 @@ public class RiotRateLimiter {
     			.limitRefreshPeriod(Duration.ofSeconds(120))
     			.timeoutDuration(Duration.ofMillis(5000))
     			.build();   	
-    	
-		this.registry = RateLimiterRegistry.ofDefaults();
+   
 		this.appShortRL = registry.rateLimiter("shortAppLimit", appShortConfig);
 		this.appLongRL = registry.rateLimiter("longAppLimit", appLongConfig);
-		*/
-		this.registry = RateLimiterRegistry.ofDefaults();
     }
     
     /**
@@ -128,13 +125,13 @@ public class RiotRateLimiter {
     public void updateGetMatchLimits(List<String> appRates, List<String> methodRates) {
     	if(getMatchRL.isEmpty()) {
     		
-    		appShortRL = registry.rateLimiter("appShortRL", buildRateLimiterConfig(appRates.get(0)));
-    		appLongRL = registry.rateLimiter("appLongRL", buildRateLimiterConfig(appRates.get(1)));
+    		this.appShortRL = registry.rateLimiter("shortAppLimit", buildRateLimiterConfig(appRates.get(0)));
+    		this.appLongRL = registry.rateLimiter("longAppLimit", buildRateLimiterConfig(appRates.get(1)));
     		
     		int i = 0;
         	for (String s : methodRates) {
     			RateLimiterConfig rlc = buildRateLimiterConfig(s);
-    	    	getMatchRL.add(registry.rateLimiter("getMatchRL#"+i, rlc));
+    	    	this.getMatchRL.add(registry.rateLimiter("getMatchRL#"+i, rlc));
     	    	i++;
     		}
     	}

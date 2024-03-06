@@ -17,11 +17,19 @@ Simple Java Valorant client consuming official [Riot API](https://developer.riot
 
 So far following end-points are implemented:
 
+`ACCOUNT-V1`
+- /riot/account/v1/accounts/by-puuid/{puuid}
+- /riot/account/v1/accounts/by-riot-id/{gameName}/{tagLine}
+
 `VAL-MATCH-V1`
 
 - /val/match/v1/matches/{matchId}
 - /val/match/v1/matchlists/by-puuid/{puuid}
 
+`Rate limits`
+The HTTP client will be auto-configured with the application and methods rate limits that Riot granted you.
+
+`Model`
 The SDK also provides a set of Java Enums for Valorant model (with UUIDs used in API) for :
 - Acts
 - Agents
@@ -44,7 +52,7 @@ Import dependency in your `pom.xml` :
 <properties>
   ...
   <!-- Use the latest version whenever possible. -->
-  <valorant.client.version>1.0.7</valorant.client.version>
+  <valorant.client.version>1.1.0</valorant.client.version>
   ...
 </properties>
 
