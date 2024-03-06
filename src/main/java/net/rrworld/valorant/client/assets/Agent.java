@@ -102,15 +102,20 @@ public enum Agent {
 	 */
 	GEKKO("e370fa57-4757-3604-3648-499e1f642d3f","Gekko","Initiator","#C7F559"),
 	/**
-	 * Sentinel
+	 * Sentinel, walls and traps.
 	 * @since 1.0.9
 	 */
 	DEADLOCK("cc8b64c8-4b25-4ff9-6e7f-37b4da43d235","Deadlock","Sentinel","#99918D"),
 	/**
-	 * Duelist
+	 * Duelist with initiator abilities (wall, decay)
 	 * @since 1.0.11
 	 */
-	ISO("0e38b510-41a8-5780-5e8f-568b2a4f2d6c", "Iso", "Duelist","#3C1279");
+	ISO("0e38b510-41a8-5780-5e8f-568b2a4f2d6c", "Iso", "Duelist","#3C1279"),
+	/**
+	 * Controller with butterflies !
+	 * @since 1.0.14
+	 */
+	FROGRAVE("", "FrogRave", "Controller","#B270A4");
 	
 	
 	private String id;
