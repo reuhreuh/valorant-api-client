@@ -24,12 +24,21 @@ import net.rrworld.valorant.client.ratelimiter.RiotRateLimiter;
 /**
  * Simple Valorant client, using official Riot API. It provides:
  * <p>
+ * ACCOUNT-V1
+ * </p>
+ * <ul>
+ * <li>/riot/account/v1/accounts/by-puuid/{puuid}</li>
+ * <li>/riot/account/v1/accounts/by-riot-id/{gameName}/{tagLine}</li>
+ * </ul>
+ * <p>
  * VAL-MATCH-V1
  * </p>
  * <ul>
  * <li>/val/match/v1/matches/{matchId}</li>
  * <li>/val/match/v1/matchlists/by-puuid/{puuid}</li>
  * </ul>
+ * 
+ * All API calls are rate-limited based on API key configuration (set by Riot Team).
  * 
  * @author reuhreuh
  */

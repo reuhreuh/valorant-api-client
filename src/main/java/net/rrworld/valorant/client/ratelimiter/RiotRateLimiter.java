@@ -55,6 +55,8 @@ public class RiotRateLimiter {
 	// Application level rate limiters
 	private RateLimiter appShortRL;
 	private RateLimiter appLongRL;
+	private static final String LONG_APP_LIMIT = "longAppLimit";
+	private static final String SHORT_APP_LIMIT = "shortAppLimit";
 	
 	// VAL-MATCH-V1 GET_getMatch Method rate limiters
 	private List<RateLimiter> getMatchRL = new ArrayList<>();
@@ -67,21 +69,20 @@ public class RiotRateLimiter {
     private RiotRateLimiter() {
     	// Default Application config
 		this.registry = RateLimiterRegistry.ofDefaults();
-    	// 20 requests every 1 seconds
+    	// 50 requests every 1 seconds
     	RateLimiterConfig appShortConfig = RateLimiterConfig.custom()
     			.limitForPeriod(20)
     			.limitRefreshPeriod(Duration.ofSeconds(1))
     			.timeoutDuration(Duration.ofMillis(5000))
     			.build();
-    	// 100 requests every 2 minutes
+    	// 200 requests every 2 minutes
     	RateLimiterConfig appLongConfig = RateLimiterConfig.custom()
     			.limitForPeriod(100)
-    			.limitRefreshPeriod(Duration.ofSeconds(120))
+    			.limitRefreshPeriod(Duration.ofSeconds(10))
     			.timeoutDuration(Duration.ofMillis(5000))
     			.build();   	
-   
-		this.appShortRL = registry.rateLimiter("shortAppLimit", appShortConfig);
-		this.appLongRL = registry.rateLimiter("longAppLimit", appLongConfig);
+		this.appShortRL = registry.rateLimiter(SHORT_APP_LIMIT, appShortConfig);
+		this.appLongRL = registry.rateLimiter(LONG_APP_LIMIT, appLongConfig);
     }
     
     /**
@@ -123,18 +124,18 @@ public class RiotRateLimiter {
     
     
     public void updateGetMatchLimits(List<String> appRates, List<String> methodRates) {
-    	if(getMatchRL.isEmpty()) {
-    		
-    		this.appShortRL = registry.rateLimiter("shortAppLimit", buildRateLimiterConfig(appRates.get(0)));
-    		this.appLongRL = registry.rateLimiter("longAppLimit", buildRateLimiterConfig(appRates.get(1)));
-    		
-    		int i = 0;
-        	for (String s : methodRates) {
-    			RateLimiterConfig rlc = buildRateLimiterConfig(s);
-    	    	this.getMatchRL.add(registry.rateLimiter("getMatchRL#"+i, rlc));
-    	    	i++;
-    		}
-    	}
+
+    	
+    	//registry.replace(LONG_APP_LIMIT, RateLimiter.of(LONG_APP_LIMIT, buildRateLimiterConfig(appRates.get(1))));
+    	
+    	/*
+		int i = 0;
+    	for (String s : methodRates) {
+			RateLimiterConfig rlc = buildRateLimiterConfig(s);
+	    	this.getMatchRL.add(registry.rateLimiter("getMatchRL#"+i, rlc));
+	    	i++;
+		}
+		*/
     }
 
 	public void updateGetMatchListLimits(List<String> appRates, List<String> methodRates) {

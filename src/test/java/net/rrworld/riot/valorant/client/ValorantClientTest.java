@@ -169,22 +169,50 @@ public class ValorantClientTest {
 	}
 	
 	@Test
-	public void testRateLimiterSimple() {
+	public void testRateLimiterSimple() throws InterruptedException {
 		MockRestServiceServer server = MockRestServiceServer.createServer(restTemplate);
+		Long startTime = null;
+		Long duration = null;
+		
 		server
 			.expect(ExpectedCount.manyTimes(),requestTo("https://eu.api.riotgames.com/val/match/v1/matches/123"))
 			.andRespond(withSuccess(jsonMatch, MediaType.APPLICATION_JSON).headers(headers));
-		
-		final Long startTime = System.currentTimeMillis();
-		IntStream.range(0, 21).forEach(i -> {
-	    	LOGGER.debug("Processing Match #{}",i);
+        
+		startTime = System.currentTimeMillis();
+		IntStream.rangeClosed(1, 30).forEach(i -> {
+			LOGGER.debug("Processing Match #{}",i);
 	        client.getMatch("123");
 		});
-	    final Long duration = (System.currentTimeMillis() - startTime);
+	    duration = (System.currentTimeMillis() - startTime);
 
 	    // then
-	    LOGGER.debug("Elpased time : {}ms", duration);
-	    Assertions.assertTrue(duration >= 1000, "Duration was expecter to be greated than 1sec");
+	    LOGGER.debug("Elapsed time : {}ms", duration);
+	    Assertions.assertTrue(duration >= 1000, "Duration was expected to be greater than 1sec");
+	    //Assertions.assertTrue(duration >= 10000, "Duration was expected to be greater than 10sec");
+	}
+	
+	
+	//@Test
+	public void testRateLimiterMultiThreaded() throws InterruptedException {
+		MockRestServiceServer server = MockRestServiceServer.createServer(restTemplate);
+		Long startTime = null;
+		Long duration = null;
+		
+		server
+			.expect(ExpectedCount.manyTimes(),requestTo("https://eu.api.riotgames.com/val/match/v1/matches/123"))
+			.andRespond(withSuccess(jsonMatch, MediaType.APPLICATION_JSON).headers(headers));
+        
+		startTime = System.currentTimeMillis();
+		IntStream.rangeClosed(1, 30).parallel().forEach(i -> {
+			LOGGER.debug("Processing Match #{}",i);
+	        client.getMatch("123");
+		});
+	    duration = (System.currentTimeMillis() - startTime);
+
+	    // then
+	    LOGGER.debug("Elapsed time : {}ms", duration);
+	    Assertions.assertTrue(duration >= 1000, "Duration was expected to be greater than 1sec");
+	    //Assertions.assertTrue(duration >= 10000, "Duration was expected to be greater than 10sec");
 	}
 	
 	
