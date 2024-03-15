@@ -115,7 +115,7 @@ public enum Agent {
 	 * Controller with butterflies !
 	 * @since 1.0.14
 	 */
-	FROGRAVE("", "FrogRave", "Controller","#B270A4");
+	CLOVE("", "Clove", "Controller","#B270A4");
 	
 	
 	private String id;
