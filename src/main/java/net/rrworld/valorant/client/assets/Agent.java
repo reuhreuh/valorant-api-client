@@ -112,10 +112,10 @@ public enum Agent {
 	 */
 	ISO("0e38b510-41a8-5780-5e8f-568b2a4f2d6c", "Iso", "Duelist","#3C1279"),
 	/**
-	 * Controller with butterflies !
+	 * Controller, can use smokes while dead. Since Episode 8 - Act 2
 	 * @since 1.0.14
 	 */
-	CLOVE("", "Clove", "Controller","#B270A4");
+	CLOVE("1dbf2edd-4729-0984-3115-daa5eed44993", "Clove", "Controller","#B270A4");
 	
 	
 	private String id;
