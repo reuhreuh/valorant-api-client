@@ -80,8 +80,10 @@ public ValorantClient getClient(@Autowired RestTemplate restClient, @Value("${ri
 Javadoc is available [here](https://javadoc.io/doc/net.rr-world/valorant-api-client/latest/index.html)
 
 ## Changelog
+### v1.0.15 (TBD)
+- ...
 ### v1.0.14 (2023-03-27)
-- Add new Agent `Cover`
+- Add new Agent `Clove`
 ### v1.0.13 (2024-01-10)
 - Fix `Outlaw` identifier
 ### v1.0.12 (2024-01-10)
