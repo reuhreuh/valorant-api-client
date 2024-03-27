@@ -102,15 +102,20 @@ public enum Agent {
 	 */
 	GEKKO("e370fa57-4757-3604-3648-499e1f642d3f","Gekko","Initiator","#C7F559"),
 	/**
-	 * Sentinel
+	 * Sentinel, walls and traps.
 	 * @since 1.0.9
 	 */
 	DEADLOCK("cc8b64c8-4b25-4ff9-6e7f-37b4da43d235","Deadlock","Sentinel","#99918D"),
 	/**
-	 * Duelist
+	 * Duelist with initiator abilities (wall, decay)
 	 * @since 1.0.11
 	 */
-	ISO("0e38b510-41a8-5780-5e8f-568b2a4f2d6c", "Iso", "Duelist","#3C1279");
+	ISO("0e38b510-41a8-5780-5e8f-568b2a4f2d6c", "Iso", "Duelist","#3C1279"),
+	/**
+	 * Controller, can use smokes while dead. Since Episode 8 - Act 2
+	 * @since 1.0.14
+	 */
+	CLOVE("1dbf2edd-4729-0984-3115-daa5eed44993", "Clove", "Controller","#B270A4");
 	
 	
 	private String id;
