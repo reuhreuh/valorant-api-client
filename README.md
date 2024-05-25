@@ -81,7 +81,8 @@ Javadoc is available [here](https://javadoc.io/doc/net.rr-world/valorant-api-cli
 
 ## Changelog
 ### v1.0.15 (TBD)
-- ...
+- Add new Episode 9
+- Add new map `xxx`
 ### v1.0.14 (2023-03-27)
 - Add new Agent `Clove`
 ### v1.0.13 (2024-01-10)
