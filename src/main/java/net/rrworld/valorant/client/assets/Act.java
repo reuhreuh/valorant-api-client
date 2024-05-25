@@ -45,11 +45,11 @@ public enum Act {
 	// Episode 8
 	EP8_Act1("ec876e6c-43e8-fa63-ffc1-2e8d4db25525", "Ep8 - Act1", "2024-01-10T00:00:00Z", "2024-03-05T00:00:00Z"),
 	EP8_Act2("22d10d66-4d2a-a340-6c54-408c7bd53807", "Ep8 - Act2", "2024-03-06T00:00:00Z", "2024-04-30T00:00:00Z"),
-	EP8_Act3("4539cac3-47ae-90e5-3d01-b3812ca3274e", "Ep8 - Act3", "2024-05-01T00:00:00Z", "2024-06-25T00:00:00Z"),
+	EP8_Act3("4539cac3-47ae-90e5-3d01-b3812ca3274e", "Ep8 - Act3", "2024-05-01T00:00:00Z", "2024-06-25T00:00:00Z");
 	// Episode 9
-	EP9_Act1("", "Ep9 - Act1", "2024-06-25T00:00:00Z", ""),
-	EP9_Act2("", "Ep9 - Act2", "", ""),
-	EP9_Act3("", "Ep9 - Act3", "", "");
+	//EP9_Act1("", "Ep9 - Act1", "2024-06-25T00:00:00Z", ""),
+	//EP9_Act2("", "Ep9 - Act2", "", ""),
+	//EP9_Act3("", "Ep9 - Act3", "", "");
 	
 	private String id;
 	private String label;

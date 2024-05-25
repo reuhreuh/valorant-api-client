@@ -44,7 +44,7 @@ Import dependency in your `pom.xml` :
 <properties>
   ...
   <!-- Use the latest version whenever possible. -->
-  <valorant.client.version>1.0.14</valorant.client.version>
+  <valorant.client.version>1.0.15</valorant.client.version>
   ...
 </properties>
 
