@@ -22,7 +22,7 @@ jobs:
         gpg-private-key: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }}
         gpg-passphrase: MAVEN_GPG_PASSPHRASE
     - name: Deploy with Maven
-      run: mvn -X -B clean deploy -Pci-cd
+      run: mvn -B clean deploy -Pci-cd
       env:
         MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
         MAVEN_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
