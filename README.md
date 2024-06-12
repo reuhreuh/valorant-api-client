@@ -44,7 +44,7 @@ Import dependency in your `pom.xml` :
 <properties>
   ...
   <!-- Use the latest version whenever possible. -->
-  <valorant.client.version>1.0.14</valorant.client.version>
+  <valorant.client.version>1.0.15</valorant.client.version>
   ...
 </properties>
 
@@ -80,9 +80,10 @@ public ValorantClient getClient(@Autowired RestTemplate restClient, @Value("${ri
 Javadoc is available [here](https://javadoc.io/doc/net.rr-world/valorant-api-client/latest/index.html)
 
 ## Changelog
-### v1.0.15 (TBD)
-- ...
-### v1.0.14 (2023-03-27)
+### v1.0.15 (2024-06-12)
+- Add new Episode 9
+- Add new map `Abyss`
+### v1.0.14 (2024-03-27)
 - Add new Agent `Clove`
 ### v1.0.13 (2024-01-10)
 - Fix `Outlaw` identifier
