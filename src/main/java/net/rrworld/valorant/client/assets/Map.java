@@ -15,9 +15,14 @@ package net.rrworld.valorant.client.assets;
 public enum Map {
 
 	/**
+	 * No border, can fall, de_vertigo like
+	 * @since 1.0.15
+	 */
+	ABYSS("224b0a95-48b9-f703-1bd8-67aca101a61f", "Abyss", "/Game/Maps/Infinity/Infinity", 0.000081, -0.000081, 0.5, 0.5),
+	/**
 	 * de_dust2 look alike, electric doors
 	 */
-	ASCENT("7eaecc1b-4337-bbf6-6ab9-04b8f06b3319", "Ascent","/Game/Maps/Ascent/Ascent",0.00007, -0.00007, 0.813895, 0.573242),
+	ASCENT("7eaecc1b-4337-bbf6-6ab9-04b8f06b3319", "Ascent", "/Game/Maps/Ascent/Ascent",0.00007, -0.00007, 0.813895, 0.573242),
 	/**
 	 * 2 Tps
 	 */
