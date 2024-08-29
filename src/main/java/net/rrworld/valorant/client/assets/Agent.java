@@ -115,7 +115,12 @@ public enum Agent {
 	 * Controller, can use smokes while dead. Since Episode 8 - Act 2
 	 * @since 1.0.14
 	 */
-	CLOVE("1dbf2edd-4729-0984-3115-daa5eed44993", "Clove", "Controller","#B270A4");
+	CLOVE("1dbf2edd-4729-0984-3115-daa5eed44993", "Clove", "Controller","#B270A4"),
+	/**
+	 * Sentinel, with trap, flash, molly and able to disable primary weapon. Since Episode 9 - Act 2
+	 * @since 1.0.16
+	 */
+	VYSE("efba5359-4016-a1e5-7626-b1ae76895940", "Vyse", "Sentinel","#4F5877");
 	
 	
 	private String id;
