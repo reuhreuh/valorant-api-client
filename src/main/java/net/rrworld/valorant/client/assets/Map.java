@@ -62,7 +62,7 @@ public enum Map {
 	 * 
 	 * @since 1.0.10
 	 */
-	SUNSET("92584fbe-486a-b1b2-9faa-39b0f486b498", "Sunset","/Game/Maps/Juliett/Juliett",0.000075, -0.000075, 0.5 , 0.515625),
+	SUNSET("92584fbe-486a-b1b2-9faa-39b0f486b498", "Sunset","/Game/Maps/Juliett/Juliett",0.000078, -0.000078, 0.5 , 0.515625),
 	/**
 	 * For internal usage
 	 */

@@ -81,7 +81,7 @@ Javadoc is available [here](https://javadoc.io/doc/net.rr-world/valorant-api-cli
 
 ## Changelog
 ### v1.0.17 (TBD)
-- ...
+- Update `Pearl` coordinates
 ### v1.0.16 (2024-08-29)
 - Add new agent `Vyse`
 ### v1.0.15 (2024-06-12)
