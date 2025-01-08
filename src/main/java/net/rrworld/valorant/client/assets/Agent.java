@@ -120,7 +120,12 @@ public enum Agent {
 	 * Sentinel, with trap, flash, molly and able to disable primary weapon. Since Episode 9 - Act 2
 	 * @since 1.0.16
 	 */
-	VYSE("efba5359-4016-a1e5-7626-b1ae76895940", "Vyse", "Sentinel","#4F5877");
+	VYSE("efba5359-4016-a1e5-7626-b1ae76895940", "Vyse", "Sentinel","#4F5877"),
+	/**
+	 * Initiator with stun, damages, intel, and disable abilities
+	 * @since 1.0.17
+	 */
+	TEJO("", "Tejo", "Initiator","#6B4210");
 	
 	
 	private String id;
