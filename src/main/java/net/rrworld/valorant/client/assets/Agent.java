@@ -125,7 +125,7 @@ public enum Agent {
 	 * Initiator with stun, damages, intel, and disable abilities
 	 * @since 1.0.17
 	 */
-	TEJO("", "Tejo", "Initiator","#6B4210");
+	TEJO("b444168c-4e35-8076-db47-ef9bf368f384", "Tejo", "Initiator","#6B4210");
 	
 	
 	private String id;
