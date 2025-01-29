@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.rr-world</groupId>
 	<artifactId>valorant-api-client</artifactId>
-	<version>1.0.18-SNAPSHOT</version>
+	<version>1.0.17</version>
 	<packaging>jar</packaging>
 	<name>valorant-api-client</name>
 	<description>Simple Valorant Http Client based on official Riot API</description>
