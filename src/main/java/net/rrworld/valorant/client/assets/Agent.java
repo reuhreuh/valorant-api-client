@@ -125,7 +125,12 @@ public enum Agent {
 	 * Initiator with stun, damages, intel, and disable abilities
 	 * @since 1.0.17
 	 */
-	TEJO("b444168c-4e35-8076-db47-ef9bf368f384", "Tejo", "Initiator","#6B4210");
+	TEJO("b444168c-4e35-8076-db47-ef9bf368f384", "Tejo", "Initiator","#6B4210"),
+	/**
+	 * Duelist with TP back, dash and new stun. with S25 // Act 2.
+	 * @since 1.0.18
+	 */
+	WAYLAY("df1cb487-4902-002e-5c17-d28e83e78588", "Waylay", "Duelist","#F0B469");
 	
 	
 	private String id;
