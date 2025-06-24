@@ -80,6 +80,8 @@ public ValorantClient getClient(@Autowired RestTemplate restClient, @Value("${ri
 Javadoc is available [here](https://javadoc.io/doc/net.rr-world/valorant-api-client/latest/index.html)
 
 ## Changelog
+### v1.0.20 (TBD)
+- ...
 ### v1.0.19 (2025-06-24)
 - New map `Corrode`
 ### v1.0.18 (2025-03-05)
