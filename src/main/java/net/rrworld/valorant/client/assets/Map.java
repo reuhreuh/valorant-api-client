@@ -32,6 +32,10 @@ public enum Map {
 	 */
 	BREEZE("2fb9a4fd-47b8-4e7d-a969-74b4046ebd53", "Breeze", "/Game/Maps/Foxtrot/Foxtrot", 0.00007, -0.00007, 0.465123, 0.833078),
 	/**
+	 * Mont Saint Michel lookalike
+	 */
+	CORRODE("1c18ab1f-420d-0d8b-71d0-77ad3c439115", "Corrode", "/Game/Maps/Rook/Rook", 0.00007, -0.00007, 0.526158, 0.5),
+	/**
 	 * Attacker have 2 spawns, defenders start from center
 	 */
 	FRACTURE("b529448b-4d60-346e-e89e-00a4c527a405", "Fracture", "/Game/Maps/Canyon/Canyon", 0.000078,-0.000078, 0.556952, 1.155886),
