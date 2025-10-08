@@ -130,7 +130,11 @@ public enum Agent {
 	 * Duelist with TP back, dash and new stun. with S25 // Act 2.
 	 * @since 1.0.18
 	 */
-	WAYLAY("df1cb487-4902-002e-5c17-d28e83e78588", "Waylay", "Duelist","#F0B469");
+	WAYLAY("df1cb487-4902-002e-5c17-d28e83e78588", "Waylay", "Duelist","#F0B469"),
+	/**
+	 * Sentinel with abilities counter, TP and a trap. Since V25 // Act 5
+	 */
+	VETO("92eeef5d-43b5-1d4a-8d03-b3927a09034b", "Veto", "Sentinel", "#3C434B");
 	
 	
 	private String id;
