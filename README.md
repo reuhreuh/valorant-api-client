@@ -44,7 +44,7 @@ Import dependency in your `pom.xml` :
 <properties>
   ...
   <!-- Use the latest version whenever possible. -->
-  <valorant.client.version>1.0.20</valorant.client.version>
+  <valorant.client.version>1.0.21</valorant.client.version>
   ...
 </properties>
 
@@ -81,7 +81,7 @@ Javadoc is available [here](https://javadoc.io/doc/net.rr-world/valorant-api-cli
 
 ## Changelog
 ### v1.0.21 (TBD)
-- ...
+- Add new Season 26
 ### v1.0.20 (2025-08-10)
 - Add new agent `Veto`
 ### v1.0.19 (2025-06-24)
