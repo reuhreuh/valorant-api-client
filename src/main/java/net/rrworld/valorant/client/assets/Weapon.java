@@ -20,6 +20,10 @@ public enum Weapon {
 
 	MELEE("2f59173c-4bed-b6c3-2191-dea9b58be9c7", "Melee"),
 	// Pistols
+	/**
+	 * @since 1.0.21
+	 */
+	BANDIT("410b2e0b-4ceb-1321-1727-20858f7f3477", "Bandit"),
 	CLASSIC("29a0cfab-485b-f5d5-779a-b59f85e204a8", "Classic"),
 	GHOST("1baa85b4-4c70-1284-64bb-6481dfc3bb4e", "Ghost"),
 	SHORTY("42da8ccc-40d5-affc-beec-15aa47b42eda", "Shorty"),
