@@ -80,8 +80,8 @@ public ValorantClient getClient(@Autowired RestTemplate restClient, @Value("${ri
 Javadoc is available [here](https://javadoc.io/doc/net.rr-world/valorant-api-client/latest/index.html)
 
 ## Changelog
-### v1.0.22 (TBD)
-- ...
+### v1.2.0 (TBD)
+- Add Rate limiting feature
 ### v1.0.21 (2026-01-09)
 - Add new Season 26
 - Add new weapon `Bandit`

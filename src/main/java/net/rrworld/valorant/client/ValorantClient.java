@@ -2,7 +2,6 @@ package net.rrworld.valorant.client;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -14,6 +13,7 @@ import org.springframework.web.client.RestTemplate;
 import net.rrworld.valorant.client.assets.Region;
 import net.rrworld.valorant.client.model.Match;
 import net.rrworld.valorant.client.model.Matchlist;
+import net.rrworld.valorant.client.rl.RestTemplateConfig;
 
 /**
  * Simple Valorant client, using official Riot API. It provides:
@@ -34,6 +34,23 @@ public class ValorantClient {
 	private static final String API_KEY_HEADER = "X-Riot-Token";
 	private static final String MATCH_URL = "https://%s.api.riotgames.com/val/match/v1/matches/%s";
 	private static final String MATCH_LIST_URL = "https://%s.api.riotgames.com/val/match/v1/matchlists/by-puuid/%s";
+	
+	/**
+	 * Application rate limit response header
+	 */
+	public static final String APP_RATE_LIMIT_HEADER = "X-App-Rate-Limit";
+	/**
+	 * Application rate limit count response header
+	 */
+	public static final String APP_RATE_LIMITE_COUNT_HEADER = "X-App-Rate-Limit-Count";
+	/**
+	 * Method rate limit response header
+	 */
+	public static final String METHOD_RATE_LIMIT_HEADER = "X-Method-Rate-Limit";
+	/**
+	 * Method rate limit count response header
+	 */
+	public static final String METHOD_RATE_LIMIT_COUNT_HEADER = "X-Method-Rate-Limit-Count";
 
 	private String apiKey;
 	private String region;
@@ -43,19 +60,22 @@ public class ValorantClient {
 	 * Create a new Valorant API client, using given API Key, for a given region
 	 * (API requires to select one)
 	 * <p>
-	 * A {@code RestTemplate} instance will be built, with a default configuration.
+	 * A {@code RestTemplate} instance will be built, with automatic rate-limiter configuration.
 	 * </p>
 	 * 
 	 * @param apiKey the Riot API key
 	 * @param region the target region
 	 */
 	public ValorantClient(final String apiKey, final Region region) {
-		this(apiKey, region, new RestTemplateBuilder().build());
+		this.apiKey = apiKey;
+		this.region = region.name().toLowerCase();
+		this.restClient = RestTemplateConfig.createRateLimitedRestTemplate();
 	}
 
 	/**
 	 * Create a new Valorant API client, using given API key, for a given region,
-	 * and a configured ready to use RestTemplate client.
+	 * and an RestTemplate client.
+	 * <p>This constructor assumes that your <code>restClient</code> takes in charge rate limiting</p>
 	 * 
 	 * @param apiKey     the Riot API key
 	 * @param region     the target region

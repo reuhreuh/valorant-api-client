@@ -5,17 +5,23 @@ import static org.springframework.test.web.client.response.MockRestResponseCreat
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.IntStream;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.test.web.client.ExpectedCount;
 import org.springframework.test.web.client.MockRestServiceServer;
 import org.springframework.web.client.RestTemplate;
 
@@ -31,20 +37,25 @@ import net.rrworld.valorant.client.model.Player;
 import net.rrworld.valorant.client.model.PlayerStat;
 import net.rrworld.valorant.client.model.RoundResult;
 import net.rrworld.valorant.client.model.Team;
+import net.rrworld.valorant.client.rl.RestTemplateConfig;
 
 public class ValorantClientTest {
+	
+	private final Logger LOGGER = LoggerFactory.getLogger(ValorantClientTest.class);
 	
 	private RestTemplate restTemplate;
 	private ValorantClient client;
 	private Resource jsonMatch;
 	private Resource jsonMatchlist;
+	private HttpHeaders headers;
 
 	@BeforeEach
 	public void init() throws IOException {
-		this.restTemplate = new RestTemplateBuilder().build();
+		this.restTemplate = RestTemplateConfig.createRateLimitedRestTemplate();
 		this.client = new ValorantClient("foo-bar-api", Region.EU, restTemplate);
 		this.jsonMatch = new ClassPathResource("match.json");
 		this.jsonMatchlist = new ClassPathResource("matchlist.json");
+		this.headers = buildRiotHeaders();
 	}
 
 	@Test
@@ -133,5 +144,84 @@ public class ValorantClientTest {
 		server.expect(requestTo("https://eu.api.riotgames.com/val/match/v1/matchlists/by-puuid/puuid-123")).andRespond(withStatus(HttpStatus.FORBIDDEN));
 		Matchlist ml = client.getMatchlist("puuid-123");		
 		Assertions.assertNull(ml, "Match should be null");
+	}
+	
+	@Test
+	public void testRateLimiterSimple() throws InterruptedException {
+		MockRestServiceServer server = MockRestServiceServer.createServer(restTemplate);
+		Long startTime = null;
+		Long duration = null;
+		
+		server
+			.expect(ExpectedCount.manyTimes(),requestTo("https://eu.api.riotgames.com/val/match/v1/matches/123"))
+			.andRespond(withSuccess(jsonMatch, MediaType.APPLICATION_JSON).headers(headers));
+        
+		startTime = System.currentTimeMillis();
+		IntStream.rangeClosed(1, 30).forEach(i -> {
+			LOGGER.info("Processing Match #{}",i);
+	        client.getMatch("123");
+		});
+	    duration = (System.currentTimeMillis() - startTime);
+
+	    // then
+	    LOGGER.debug("Elapsed time : {}ms", duration);
+	    Assertions.assertTrue(duration >= 1000, "Duration was expected to be greater than 1sec");
+	    //Assertions.assertTrue(duration >= 10000, "Duration was expected to be greater than 10sec");
+	}
+	
+	
+	//@Test
+	public void testRateLimiterMultiThreaded() throws InterruptedException {
+		MockRestServiceServer server = MockRestServiceServer.createServer(restTemplate);
+		Long startTime = null;
+		Long duration = null;
+		
+		server
+			.expect(ExpectedCount.manyTimes(),requestTo("https://eu.api.riotgames.com/val/match/v1/matches/123"))
+			.andRespond(withSuccess(jsonMatch, MediaType.APPLICATION_JSON).headers(headers));
+        
+		startTime = System.currentTimeMillis();
+		IntStream.rangeClosed(1, 30).parallel().forEach(i -> {
+			LOGGER.info("Processing Match #{}",i);
+	        client.getMatch("123");
+		});
+	    duration = (System.currentTimeMillis() - startTime);
+
+	    // then
+	    LOGGER.info("Elapsed time : {}ms", duration);
+	    Assertions.assertTrue(duration >= 1000, "Duration was expected to be greater than 1sec");
+	    //Assertions.assertTrue(duration >= 10000, "Duration was expected to be greater than 10sec");
+	}
+	
+	
+	@Test
+	public void testRateLimiterAdvanced() {
+		MockRestServiceServer server = MockRestServiceServer.createServer(restTemplate);
+		server
+			.expect(ExpectedCount.manyTimes(),requestTo("https://eu.api.riotgames.com/val/match/v1/matches/123"))
+			.andRespond(withSuccess(jsonMatch, MediaType.APPLICATION_JSON).headers(headers));
+		
+		final Long startTime = System.currentTimeMillis();
+	    IntStream.range(1, 500).forEach(i -> {
+	    	LOGGER.info("Processing Match #{}",i);
+	        client.getMatch("123");
+	    });
+	    final Long duration = (System.currentTimeMillis() - startTime);
+
+	    // then
+	    LOGGER.info("Elpased time : {}ms", duration);
+	    Assertions.assertTrue(duration >= 10000);
+	}
+	
+	private HttpHeaders buildRiotHeaders() {
+		HttpHeaders h = new HttpHeaders();
+		// 20 per 1sec 
+		// 100 per 2min
+		h.put(ValorantClient.APP_RATE_LIMIT_HEADER, List.of("20:1,100:120"));
+		h.put(ValorantClient.APP_RATE_LIMITE_COUNT_HEADER, List.of("1:1,1:120"));
+		// 60 per 60sec
+		h.put(ValorantClient.METHOD_RATE_LIMIT_HEADER, List.of("60:60"));
+		h.put(ValorantClient.METHOD_RATE_LIMIT_COUNT_HEADER, List.of("1:60"));
+		return h;
 	}
 }
