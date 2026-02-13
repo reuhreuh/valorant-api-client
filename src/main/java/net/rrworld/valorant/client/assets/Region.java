@@ -12,29 +12,39 @@ public enum Region {
 	/**
 	 * Pacific Asia
 	 */
-	AP,
+	AP("ap"),
 	/**
 	 * Brazil
 	 */
-	BR,
+	BR("br"),
 	/**
 	 * E-Sports
 	 */
-	ESPORTS,
+	ESPORTS("esports"),
 	/**
 	 * Europe
 	 */
-	EU,
+	EU("eu"),
 	/**
 	 * South Korea
 	 */
-	KR,
+	KR("kr"),
 	/**
 	 * Latin America
 	 */
-	LATAM,
+	LATAM("latam"),
 	/**
 	 * Near Airport
 	 */
-	NA;
+	NA("na");
+	
+	private String value;
+	
+	private Region(String value) {
+		this.value = value;
+	}
+	
+	public String getValue() {
+		return this.value;
+	}
 }
