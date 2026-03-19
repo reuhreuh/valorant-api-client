@@ -134,7 +134,12 @@ public enum Agent {
 	/**
 	 * Sentinel with abilities counter, TP and a trap. Since V25 // Act 5
 	 */
-	VETO("92eeef5d-43b5-1d4a-8d03-b3927a09034b", "Veto", "Sentinel", "#3C434B");
+	VETO("92eeef5d-43b5-1d4a-8d03-b3927a09034b", "Veto", "Sentinel", "#3C434B"),
+	/**
+	 * Controller with concus or heal abilities. Since V26 // Act 2
+	 * @since 1.0.22
+	 */
+	MIKS("7c8a4701-4de6-9355-b254-e09bc2a34b72", "Miks", "Controller", "#342F28");
 	
 	
 	private String id;
