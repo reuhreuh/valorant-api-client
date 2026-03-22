@@ -44,7 +44,7 @@ Import dependency in your `pom.xml` :
 <properties>
   ...
   <!-- Use the latest version whenever possible. -->
-  <valorant.client.version>1.0.21</valorant.client.version>
+  <valorant.client.version>1.0.22</valorant.client.version>
   ...
 </properties>
 
@@ -80,8 +80,8 @@ public ValorantClient getClient(@Autowired RestTemplate restClient, @Value("${ri
 Javadoc is available [here](https://javadoc.io/doc/net.rr-world/valorant-api-client/latest/index.html)
 
 ## Changelog
-### v1.0.22 (TBD)
-- ...
+### v1.0.22 (2026-03-122)
+- New agent `Miks`
 ### v1.0.21 (2026-01-09)
 - Add new Season 26
 - Add new weapon `Bandit`
