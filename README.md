@@ -80,7 +80,7 @@ public ValorantClient getClient(@Autowired RestTemplate restClient, @Value("${ri
 Javadoc is available [here](https://javadoc.io/doc/net.rr-world/valorant-api-client/latest/index.html)
 
 ## Changelog
-### v1.0.22 (TBD)
+### v1.0.22 (2026-03-122)
 - New agent `Miks`
 ### v1.0.21 (2026-01-09)
 - Add new Season 26
