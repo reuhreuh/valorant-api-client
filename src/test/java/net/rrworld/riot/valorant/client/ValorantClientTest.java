@@ -11,13 +11,12 @@ import java.util.Optional;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.client.MockRestServiceServer;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.client.RestClient;
 
 import net.rrworld.valorant.client.ValorantClient;
 import net.rrworld.valorant.client.assets.Act;
@@ -33,23 +32,23 @@ import net.rrworld.valorant.client.model.RoundResult;
 import net.rrworld.valorant.client.model.Team;
 
 public class ValorantClientTest {
-	
-	private RestTemplate restTemplate;
+
 	private ValorantClient client;
+	private MockRestServiceServer server;
 	private Resource jsonMatch;
 	private Resource jsonMatchlist;
 
 	@BeforeEach
 	public void init() throws IOException {
-		this.restTemplate = new RestTemplateBuilder().build();
-		this.client = new ValorantClient("foo-bar-api", Region.EU, restTemplate);
+        RestClient.Builder builder = RestClient.builder();
+        server = MockRestServiceServer.bindTo(builder).build();
+		this.client = new ValorantClient("foo-bar-api", Region.EU, builder);
 		this.jsonMatch = new ClassPathResource("match.json");
 		this.jsonMatchlist = new ClassPathResource("matchlist.json");
 	}
 
 	@Test
 	public void testGetMatch200() {
-		MockRestServiceServer server = MockRestServiceServer.createServer(restTemplate);
 		server.expect(requestTo("https://eu.api.riotgames.com/val/match/v1/matches/123")).andRespond(withSuccess(jsonMatch, MediaType.APPLICATION_JSON));
 		Match m = client.getMatch("123");
 		// Match
@@ -93,7 +92,6 @@ public class ValorantClientTest {
 	
 	@Test
 	public void testGetMatch404() {
-		MockRestServiceServer server = MockRestServiceServer.createServer(restTemplate);
 		server.expect(requestTo("https://eu.api.riotgames.com/val/match/v1/matches/123")).andRespond(withStatus(HttpStatus.NOT_FOUND));
 		Match m = client.getMatch("123");		
 		Assertions.assertNull(m, "Match should be null");
@@ -101,7 +99,6 @@ public class ValorantClientTest {
 	
 	@Test
 	public void testGetMatch403() {
-		MockRestServiceServer server = MockRestServiceServer.createServer(restTemplate);
 		server.expect(requestTo("https://eu.api.riotgames.com/val/match/v1/matches/123")).andRespond(withStatus(HttpStatus.FORBIDDEN));
 		Match m = client.getMatch("123");		
 		Assertions.assertNull(m, "Match should be null");
@@ -109,7 +106,6 @@ public class ValorantClientTest {
 	
 	@Test
 	public void testGetMatchlist200() {
-		MockRestServiceServer server = MockRestServiceServer.createServer(restTemplate);
 		server.expect(requestTo("https://eu.api.riotgames.com/val/match/v1/matchlists/by-puuid/puuid-123")).andRespond(withSuccess(jsonMatchlist, MediaType.APPLICATION_JSON));
 		Matchlist ml = client.getMatchlist("puuid-123");
 		Assertions.assertNotNull(ml, "Matchlist shouldn't be null");
@@ -121,7 +117,6 @@ public class ValorantClientTest {
 	
 	@Test
 	public void testGetMatchlist404() {
-		MockRestServiceServer server = MockRestServiceServer.createServer(restTemplate);
 		server.expect(requestTo("https://eu.api.riotgames.com/val/match/v1/matchlists/by-puuid/puuid-123")).andRespond(withStatus(HttpStatus.NOT_FOUND));
 		Matchlist ml = client.getMatchlist("puuid-123");		
 		Assertions.assertNull(ml, "Match should be null");
@@ -129,7 +124,6 @@ public class ValorantClientTest {
 	
 	@Test
 	public void testGetMatchlist403() {
-		MockRestServiceServer server = MockRestServiceServer.createServer(restTemplate);
 		server.expect(requestTo("https://eu.api.riotgames.com/val/match/v1/matchlists/by-puuid/puuid-123")).andRespond(withStatus(HttpStatus.FORBIDDEN));
 		Matchlist ml = client.getMatchlist("puuid-123");		
 		Assertions.assertNull(ml, "Match should be null");

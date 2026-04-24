@@ -35,7 +35,7 @@ The SDK also provides a set of Java Enums for Valorant model (with UUIDs used in
 ### Prerequisites
 What you need is :
 - A Valorant Riot API key
-- Java 11 & Maven
+- Java 25 & Maven
 
 ### Installation
 Import dependency in your `pom.xml` :
@@ -44,7 +44,7 @@ Import dependency in your `pom.xml` :
 <properties>
   ...
   <!-- Use the latest version whenever possible. -->
-  <valorant.client.version>1.0.22</valorant.client.version>
+  <valorant.client.version>2.0.0</valorant.client.version>
   ...
 </properties>
 
@@ -80,8 +80,9 @@ public ValorantClient getClient(@Autowired RestTemplate restClient, @Value("${ri
 Javadoc is available [here](https://javadoc.io/doc/net.rr-world/valorant-api-client/latest/index.html)
 
 ## Changelog
-### v1.0.23 (TBD)
-- ...
+### v2.0.0 (TBD)
+- Upgrade to spring-boot version 4.x
+- Now requires Java 25
 ### v1.0.22 (2026-03-122)
 - New agent `Miks`
 ### v1.0.21 (2026-01-09)
