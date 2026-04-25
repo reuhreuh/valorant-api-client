@@ -67,15 +67,6 @@ ValorantClient client = new ValorantClient("RGAPI-XXX", Region.EU);
 Match m = client.getMatch("de3dc2b3-7db8-4b96-8a8a-17e5cee8e634");
 ```
 
-If you are in a Spring context, you may wish to initialize a bean using your `RestTemplate` instance :
-
-```java
-@Bean
-public ValorantClient getClient(@Autowired RestTemplate restClient, @Value("${riot.api.key}") String apiKey) {
-	return new ValorantClient(apiKey, Region.EU, restClient);
-}
-```
-
 ## Documentation
 Javadoc is available [here](https://javadoc.io/doc/net.rr-world/valorant-api-client/latest/index.html)
 
