@@ -2,14 +2,8 @@ package net.rrworld.valorant.client;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.client.RestClientException;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.web.client.RestClient;
 
 import net.rrworld.valorant.client.assets.Region;
 import net.rrworld.valorant.client.model.Match;
@@ -32,12 +26,11 @@ public class ValorantClient {
 	private final Logger LOGGER = LoggerFactory.getLogger(ValorantClient.class);
 
 	private static final String API_KEY_HEADER = "X-Riot-Token";
-	private static final String MATCH_URL = "https://%s.api.riotgames.com/val/match/v1/matches/%s";
-	private static final String MATCH_LIST_URL = "https://%s.api.riotgames.com/val/match/v1/matchlists/by-puuid/%s";
+	private static final String RIOT_URL = "https://%s.api.riotgames.com";
+	private static final String MATCH_URL = "/val/match/v1/matches/%s";
+	private static final String MATCH_LIST_URL = "/val/match/v1/matchlists/by-puuid/%s";
 
-	private String apiKey;
-	private String region;
-	private RestTemplate restClient;
+	private RestClient restClient;
 
 	/**
 	 * Create a new Valorant API client, using given API Key, for a given region
@@ -50,21 +43,23 @@ public class ValorantClient {
 	 * @param region the target region
 	 */
 	public ValorantClient(final String apiKey, final Region region) {
-		this(apiKey, region, new RestTemplateBuilder().build());
+		this(apiKey, region, RestClient.builder());
 	}
-
-	/**
-	 * Create a new Valorant API client, using given API key, for a given region,
-	 * and a configured ready to use RestTemplate client.
-	 * 
-	 * @param apiKey     the Riot API key
-	 * @param region     the target region
-	 * @param restClient configured http client
-	 */
-	public ValorantClient(final String apiKey, final Region region, final RestTemplate restClient) {
-		this.apiKey = apiKey;
-		this.region = region.name().toLowerCase();
-		this.restClient = restClient;
+	
+	public ValorantClient(final String apiKey, final Region region, RestClient.Builder builder) {
+		this.restClient = builder
+							.baseUrl(String.format(RIOT_URL, region.name().toLowerCase()))
+							.defaultHeader(API_KEY_HEADER, apiKey)
+							.defaultStatusHandler(HttpStatusCode::is5xxServerError, (request, response) -> {
+								LOGGER.error("Server error {} while calling Riot API {} {}", response.getStatusCode().value(), request.getMethod(), request.getURI().toString());
+						    })
+							.defaultStatusHandler(HttpStatusCode::is4xxClientError, (request, response) -> {
+								LOGGER.error("Client error {} while calling Riot API {} {}", response.getStatusCode().value(), request.getMethod(), request.getURI().toString());
+						    })
+							.defaultStatusHandler(HttpStatusCode::is2xxSuccessful, (request, response) -> {
+								LOGGER.info("Riot API response OK for : {}", request.getURI().toString());
+						    })
+							.build();
 	}
 
 	/**
@@ -77,23 +72,13 @@ public class ValorantClient {
 	 */
 	public Match getMatch(final String matchId) {
 		LOGGER.info("Retrieving match {} from Riot API", matchId);
-		String url = String.format(MATCH_URL, region, matchId);
+		String url = String.format(MATCH_URL, matchId);
 		Match m = null;
-		try {
-			HttpHeaders headers = new HttpHeaders();
-			headers.add(API_KEY_HEADER, apiKey);
-			HttpEntity<String> entity = new HttpEntity<>(headers);
-			ResponseEntity<Match> response = restClient.exchange(url, HttpMethod.GET, entity, Match.class);
-			if (HttpStatus.OK == response.getStatusCode()) {
-				LOGGER.info("Match {} found on Riot API", matchId);
-				m = response.getBody();
-			} else {
-				LOGGER.warn("Match {} not found on Riot API. HTTP response code : {}", matchId,
-						response.getStatusCode().value());
-			}
-		} catch (RestClientException e) {
-			LOGGER.error("Error while calling Riot API for getMatch({}) : {}", matchId, e.getMessage());
-		}
+		m = restClient
+				.get()
+				.uri(url)
+				.retrieve()
+				.body(Match.class);
 		return m;
 	}
 
@@ -108,23 +93,13 @@ public class ValorantClient {
 	 */
 	public Matchlist getMatchlist(final String playerPuuid) {
 		LOGGER.info("Retrieving match list for player {} from Riot API", playerPuuid);
-		String url = String.format(MATCH_LIST_URL, region, playerPuuid);
+		String url = String.format(MATCH_LIST_URL, playerPuuid);
 		Matchlist ml = null;
-		try {
-			HttpHeaders headers = new HttpHeaders();
-			headers.add(API_KEY_HEADER, apiKey);
-			HttpEntity<String> entity = new HttpEntity<>(headers);
-			ResponseEntity<Matchlist> response = restClient.exchange(url, HttpMethod.GET, entity, Matchlist.class);
-			if (HttpStatus.OK == response.getStatusCode()) {
-				LOGGER.info("Matchlist found for player {} on Riot API", playerPuuid);
-				ml = response.getBody();
-			} else {
-				LOGGER.warn("Matchlist not found for player {} on Riot API. HTTP response code : {}", playerPuuid,
-						response.getStatusCode().value());
-			}
-		} catch (RestClientException e) {
-			LOGGER.error("Error while calling Riot API for getMatchlist({}) : {}", playerPuuid, e.getMessage());
-		}
+		ml = restClient
+				.get()
+				.uri(url)
+				.retrieve()
+				.body(Matchlist.class);
 		return ml;
 	}
 }

@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.rr-world</groupId>
 	<artifactId>valorant-api-client</artifactId>
-	<version>1.0.23-SNAPSHOT</version>
+	<version>2.0.0</version>
 	<packaging>jar</packaging>
 	<name>valorant-api-client</name>
 	<description>Simple Valorant Http Client based on official Riot API</description>
@@ -31,11 +31,15 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.7.18</version>
+		<version>4.0.6</version>
 		<relativePath />
 	</parent>
 
 	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-restclient</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-json</artifactId>
@@ -49,6 +53,7 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
@@ -107,12 +112,12 @@
 			<plugin>
 				<groupId>org.sonatype.central</groupId>
 				<artifactId>central-publishing-maven-plugin</artifactId>
-				<version>0.8.0</version>
+				<version>0.10.0</version>
 				<extensions>true</extensions>
 				<configuration>
 					<publishingServerId>central</publishingServerId>
-             		<autoPublish>true</autoPublish>
-             		<waitUntil>published</waitUntil>
+					<autoPublish>true</autoPublish>
+					<waitUntil>published</waitUntil>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -143,7 +148,8 @@
 									<goal>sign</goal>
 								</goals>
 								<configuration>
-									<!-- Prevent gpg from using pinentry programs. Fixes: gpg: signing 
+									<!-- Prevent gpg from using pinentry
+									programs. Fixes: gpg: signing 
 										failed: Inappropriate ioctl for device -->
 									<gpgArguments>
 										<arg>--pinentry-mode</arg>
@@ -160,11 +166,10 @@
 
 	<!-- properties -->
 	<properties>
-		<resilience4j.version>1.7.1</resilience4j.version>
-		<jacoco.plugin.version>0.8.8</jacoco.plugin.version>
+		<jacoco.plugin.version>0.8.14</jacoco.plugin.version>
 		<maven.gpg.version>3.2.4</maven.gpg.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>11</maven.compiler.source>
-		<maven.compiler.target>11</maven.compiler.target>
+		<maven.compiler.source>21</maven.compiler.source>
+		<maven.compiler.target>21</maven.compiler.target>
 	</properties>
 </project>
