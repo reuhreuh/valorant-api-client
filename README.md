@@ -71,7 +71,9 @@ Match m = client.getMatch("de3dc2b3-7db8-4b96-8a8a-17e5cee8e634");
 Javadoc is available [here](https://javadoc.io/doc/net.rr-world/valorant-api-client/latest/index.html)
 
 ## Changelog
-### v2.0.0 (TBD)
+### v2.0.1 (TBD)
+- TBD
+### v2.0.0 (2026-05-08)
 - Upgrade to spring-boot version 4.x
 - Now requires Java 21
 ### v1.0.22 (2026-03-122)
