@@ -126,8 +126,7 @@
 	<!-- Release management -->
 	<scm>
 		<connection>scm:git:git@github.com:reuhreuh/valorant-api-client.git</connection>
-		<developerConnection>
-			scm:git:git@github.com:reuhreuh/valorant-api-client.git</developerConnection>
+		<developerConnection>scm:git:git@github.com:reuhreuh/valorant-api-client.git</developerConnection>
 		<url>https://github.com/reuhreuh/valorant-api-client/tree/master</url>
 	</scm>
 
@@ -167,7 +166,6 @@
 
 	<!-- properties -->
 	<properties>
-		<resilience4j.version>1.7.1</resilience4j.version>
 		<jacoco.plugin.version>0.8.14</jacoco.plugin.version>
 		<maven.gpg.version>3.2.4</maven.gpg.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
