@@ -44,7 +44,7 @@ Import dependency in your `pom.xml` :
 <properties>
   ...
   <!-- Use the latest version whenever possible. -->
-  <valorant.client.version>2.0.0</valorant.client.version>
+  <valorant.client.version>2.0.1</valorant.client.version>
   ...
 </properties>
 
@@ -72,7 +72,7 @@ Javadoc is available [here](https://javadoc.io/doc/net.rr-world/valorant-api-cli
 
 ## Changelog
 ### v2.0.1 (TBD)
-- TBD
+- New map `Summit`
 ### v2.0.0 (2026-05-08)
 - Upgrade to spring-boot version 4.x
 - Now requires Java 21

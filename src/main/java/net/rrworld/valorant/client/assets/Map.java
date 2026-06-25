@@ -62,6 +62,10 @@ public enum Map {
 	 */
 	SPLIT("d960549e-485c-e861-8d71-aa9d1aed12a2", "Split","/Game/Maps/Bonsai/Bonsai",0.000078,-0.000078,0.842188,0.697578),
 	/**
+	 * Map with breakable switches to close windows.
+	 */
+	SUMMIT("756da597-416b-c0f2-f47b-afbdf28670bc", "Summit","/Game/Maps/Plummet/Plummet",0.000075, -0.000075, 0.047401, 0.978891),
+	/**
 	 * Los Angeles, two sites, one electric door
 	 * 
 	 * @since 1.0.10
