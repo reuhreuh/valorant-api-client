@@ -19,6 +19,8 @@ public class PlayerStat {
     private List<Damage> damage = null;
     @JsonProperty("score")
     private Integer score;
+    @JsonProperty("performance")
+    private Double performance;
     @JsonProperty("economy")
     private Economy economy;
     @JsonProperty("ability")
@@ -55,8 +57,13 @@ public class PlayerStat {
     public void setScore(Integer score) {
         this.score = score;
     }
-
-    public Economy getEconomy() {
+    public Double getPerformance() {
+		return performance;
+	}
+	public void setPerformance(Double performance) {
+		this.performance = performance;
+	}
+	public Economy getEconomy() {
         return economy;
     }
 
