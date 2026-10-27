@@ -13,6 +13,8 @@ public class Stats {
     private Integer score;
     @JsonProperty("roundsPlayed")
     private Integer roundsPlayed;
+    @JsonProperty("performance")
+    private Float performance;
     @JsonProperty("kills")
     private Integer kills;
     @JsonProperty("deaths")
@@ -79,4 +81,10 @@ public class Stats {
     public void setAbilityCasts(AbilityCasts abilityCasts) {
         this.abilityCasts = abilityCasts;
     }
+    public Float getPerformance() {
+		return performance;
+	}
+	public void setPerformance(Float performance) {
+		this.performance = performance;
+	}
 }

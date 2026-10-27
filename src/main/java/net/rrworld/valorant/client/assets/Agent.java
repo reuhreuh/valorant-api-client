@@ -139,7 +139,12 @@ public enum Agent {
 	 * Controller with concus or heal abilities. Since V26 // Act 2
 	 * @since 1.0.22
 	 */
-	MIKS("7c8a4701-4de6-9355-b254-e09bc2a34b72", "Miks", "Controller", "#342F28");
+	MIKS("7c8a4701-4de6-9355-b254-e09bc2a34b72", "Miks", "Controller", "#342F28"),
+	/**
+	 * Duelist with telekinesis abilities. Since V26 // Act 6
+	 * @since 2.0.1
+	 */
+	HUSH("ddd5a15c-4fbe-42fa-3789-11a55ca5ee04", "Hush", "Duelist", "#CE92EF");
 	
 	
 	private String id;

@@ -55,8 +55,7 @@ public class PlayerStat {
     public void setScore(Integer score) {
         this.score = score;
     }
-
-    public Economy getEconomy() {
+	public Economy getEconomy() {
         return economy;
     }
 

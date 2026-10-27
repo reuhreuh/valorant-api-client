@@ -50,6 +50,10 @@ public enum Weapon {
 	 * @since 1.0.12
 	 */
 	OUTLAW("5f0aaf7a-4289-3998-d5ff-eb9a5cf7ef5c","Outlaw"),
+	/**
+	 * @since 2.0.1
+	 */
+	WARDEN("8db0a1bf-4a50-832a-4566-faaaa6d250ca", "Warden"),
 	
 	/**
 	 * Chamber Ability1, seen as Weapon by Riot API

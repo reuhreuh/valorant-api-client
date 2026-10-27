@@ -22,6 +22,7 @@
             "characterId": "f94c3b30-42be-e959-889c-5aa313dba261",
             "stats": {
                 "score": 5404,
+				"performance": 312.58069659735196,
                 "roundsPlayed": 22,
                 "kills": 18,
                 "deaths": 19,
@@ -47,6 +48,7 @@
             "characterId": "add6443a-41bd-e414-f6ad-e58d267f4e95",
             "stats": {
                 "score": 2391,
+				"performance": 205.5,
                 "roundsPlayed": 22,
                 "kills": 8,
                 "deaths": 17,
@@ -72,6 +74,7 @@
             "characterId": "569fdd95-4d10-43ab-ca70-79becc718b46",
             "stats": {
                 "score": 5973,
+				"performance": 404.200,
                 "roundsPlayed": 22,
                 "kills": 22,
                 "deaths": 14,
@@ -97,6 +100,7 @@
             "characterId": "6f2a04ca-43e0-be17-7f36-b3908627744d",
             "stats": {
                 "score": 3758,
+				"performance": 500.0,
                 "roundsPlayed": 22,
                 "kills": 13,
                 "deaths": 16,
@@ -122,6 +126,7 @@
             "characterId": "569fdd95-4d10-43ab-ca70-79becc718b46",
             "stats": {
                 "score": 3780,
+				"performance": 102.3,
                 "roundsPlayed": 22,
                 "kills": 13,
                 "deaths": 12,
@@ -147,6 +152,7 @@
             "characterId": "22697a3d-45bf-8dd7-4fec-84a9e28c69d7",
             "stats": {
                 "score": 4909,
+				"performance": 129.23,
                 "roundsPlayed": 22,
                 "kills": 16,
                 "deaths": 15,
